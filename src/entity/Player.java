@@ -20,6 +20,7 @@ public class Player extends Entity {
     public boolean moving = false;
     public int hasKey = 0;
     public static boolean hasWeapon = false;
+    int counterGun = 0;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         super(gp);
@@ -130,6 +131,7 @@ public class Player extends Entity {
     }
 
     public void pickUpObject(int i) {
+
         if(i != 999) {
             String objectName = gp.obj[i].name;
 
@@ -162,12 +164,18 @@ public class Player extends Entity {
                     gp.playSE(4);
                     break;
                 case "Skargun":
-                    if(!hasWeapon) {
-                        System.out.println("You picked Skargun!");
-                        hasWeapon = true;
-                    } else {
-                        System.out.println("You already have a weapon!");
-                    }
+                    counterGun++;
+                        if(!hasWeapon) {
+                            System.out.println("You picked Skargun!");
+
+                            hasWeapon = true;
+                        } else {
+                            if(counterGun > 20) {
+                                System.out.println("You already have a weapon!");
+                                counterGun = 0;
+                            }
+                        }
+
                     break;
             }
         }

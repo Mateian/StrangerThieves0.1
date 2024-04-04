@@ -156,7 +156,6 @@ public class GamePanel extends JPanel implements Runnable {
             long passed = drawEnd - drawStart;
             graph2.setColor(Color.white);
             graph2.drawString("Draw Time: " + passed, 10, 400);
-            System.out.println("Draw Time: " + passed);
         }
         graph2.dispose();
     }

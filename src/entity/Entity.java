@@ -94,7 +94,9 @@ public class Entity {
     }
 
     public void setAction() {}
-    // Functie de adaugat in clasele in care se doreste implementarea AI-ului
+
+//    Functie de adaugat in clasele in care se doreste implementarea AI-ului
+
 //    public void setAction() {
 //        actionCounter++;
 //

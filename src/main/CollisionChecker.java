@@ -93,7 +93,7 @@ public class CollisionChecker {
                         }
                         break;
                     case "right":
-                        entity.solidArea.x -= entity.speed;
+                        entity.solidArea.x += entity.speed;
                         if(entity.solidArea.intersects(gp.obj[i].solidArea)) {
                             if(gp.obj[i].collision) {
                                 entity.collisionOn = true;
@@ -104,7 +104,7 @@ public class CollisionChecker {
                         }
                         break;
                     case "left":
-                        entity.solidArea.x += entity.speed;
+                        entity.solidArea.x -= entity.speed;
                         if(entity.solidArea.intersects(gp.obj[i].solidArea)) {
                             if(gp.obj[i].collision) {
                                 entity.collisionOn = true;
