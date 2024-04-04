@@ -1,5 +1,7 @@
 package main;
 
+import entity.Entity;
+import entity.NPC_Fen;
 import entity.Player;
 import objects.SuperObject;
 import tiles.TileManager;
@@ -24,17 +26,26 @@ public class GamePanel extends JPanel implements Runnable {
     // FPS
     int FPS = 60;
 
+    // System
     TileManager tileMng = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
     public UI ui = new UI(this);
     Thread gameThread;
-
-    public Player player = new Player(this, keyH);
     public CollisionChecker cChecker = new CollisionChecker(this);
-    public SuperObject[] obj = new SuperObject[10];
     public AssetSetter aSetter = new AssetSetter(this);
+
+    // Entities & Objects
+    public Player player = new Player(this, keyH);
+    public SuperObject[] obj = new SuperObject[10];
+    public Entity[] NPC = new Entity[10];
+
+
+    // Game State
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 0;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -46,8 +57,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         aSetter.setObject();
-
+        aSetter.setNPC();
         playMusic(0);
+        gameState = playState;
     }
 
     public void startGame() {
@@ -75,6 +87,9 @@ public class GamePanel extends JPanel implements Runnable {
             lastTime = currentTime;
 
             if(delta >= 1) {
+                if(gameState == pauseState) {
+                    ui.drawPauseScreen();
+                }
                 update();
                 repaint();
                 delta--;
@@ -89,7 +104,14 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+        if(gameState == playState) {
+            player.update();
+            for(int i = 0; i < NPC.length; ++i) {
+                if(NPC[i] != null) {
+                    NPC[i].update();
+                }
+            }
+        }
     }
 
     public void paintComponent(Graphics graph) {
@@ -114,7 +136,13 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
 
-        // player
+        // NPC
+        for(int i = 0; i < NPC.length; ++i) {
+            if(NPC[i] != null) {
+                NPC[i].draw(graph2);
+            }
+        }
+            // player
         player.draw(graph2);
 
         // UI

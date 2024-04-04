@@ -1,5 +1,6 @@
 package main;
 
+import entity.NPC_Fen;
 import objects.*;
 
 public class AssetSetter {
@@ -45,5 +46,11 @@ public class AssetSetter {
         gp.obj[8] = new OBJ_Skargun(gp);
         gp.obj[8].worldX = 22 * gp.tileSize;
         gp.obj[8].worldY = 30 * gp.tileSize;
+    }
+
+    public void setNPC() {
+        gp.NPC[0] = new NPC_Fen(gp);
+        gp.NPC[0].worldx = gp.tileSize * 23;
+        gp.NPC[0].worldy = gp.tileSize * 30;
     }
 }

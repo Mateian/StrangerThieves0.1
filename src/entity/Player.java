@@ -10,17 +10,20 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Entity {
-    GamePanel gp;
     KeyHandler keyH;
+
+    public BufferedImage up, down, left, right;
 
     public final int screenX;
     public final int screenY;
 
+    public boolean moving = false;
     public int hasKey = 0;
     public static boolean hasWeapon = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
-        this.gp = gp;
+        super(gp);
+
         this.keyH = keyH;
 
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
@@ -35,7 +38,7 @@ public class Player extends Entity {
         solidArea.height = 32;
 
         setDefaultValues();
-        getPlayerImage();
+        getImage();
     }
 
     public void setDefaultValues() {
@@ -45,28 +48,19 @@ public class Player extends Entity {
         direction = "up";
     }
 
-    public void getPlayerImage() {
-        up1 = setup("skar_back_1");
-        up2 = setup("skar_back_2");
-        down1 = setup("skar_front_1");
-        down2 = setup("skar_front_2");
-        left1 = setup("skar_left_1");
-        left2 = setup("skar_left_2");
-        right1 = setup("skar_right_1");
-        right2 = setup("skar_right_2");
-    }
-
-    public BufferedImage setup(String imageName) {
-        UtilityTool tool = new UtilityTool();
-        BufferedImage image = null;
-
-        try{
-            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = tool.scaleImage(image, gp.tileSize, gp.tileSize);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return image;
+    public void getImage() {
+        up = setup("/player/skar_back");
+        up1 = setup("/player/skar_back_1");
+        up2 = setup("/player/skar_back_2");
+        down = setup("/player/skar_front");
+        down1 = setup("/player/skar_front_1");
+        down2 = setup("/player/skar_front_2");
+        left = setup("/player/skar_left");
+        left1 = setup("/player/skar_left_1");
+        left2 = setup("/player/skar_left_2");
+        right = setup("/player/skar_right");
+        right1 = setup("/player/skar_right_1");
+        right2 = setup("/player/skar_right_2");
     }
 
     public void update() {
@@ -113,6 +107,9 @@ public class Player extends Entity {
             }
             spriteCounter++;
             if(spriteCounter > 10) {
+                if(spriteNumber == 0) {
+                    spriteNumber = 1;
+                }
                 if(spriteNumber == 1) {
                     spriteNumber = 2;
                 } else if(spriteNumber == 2) {
@@ -120,6 +117,8 @@ public class Player extends Entity {
                 }
                 spriteCounter = 0;
             }
+        } else {
+            spriteNumber = 0;
         }
     }
 
@@ -172,6 +171,9 @@ public class Player extends Entity {
 
         switch(direction) {
             case "up":
+                if(spriteNumber == 0) {
+                    image = up;
+                }
                 if(spriteNumber == 1) {
                     image = up1;
                 }
@@ -180,6 +182,9 @@ public class Player extends Entity {
                 }
                 break;
             case "down":
+                if(spriteNumber == 0) {
+                    image = down;
+                }
                 if(spriteNumber == 1) {
                     image = down1;
                 }
@@ -188,6 +193,9 @@ public class Player extends Entity {
                 }
                 break;
             case "left":
+                if(spriteNumber == 0) {
+                    image = left;
+                }
                 if(spriteNumber == 1) {
                     image = left1;
                 }
@@ -196,6 +204,9 @@ public class Player extends Entity {
                 }
                 break;
             case "right":
+                if(spriteNumber == 0) {
+                    image = right;
+                }
                 if(spriteNumber == 1) {
                     image = right1;
                 }

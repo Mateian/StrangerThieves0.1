@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 public class UI {
+    Graphics2D graph2;
     GamePanel gp;
     Font arial_40, arial_80B;
     BufferedImage keyImage;
@@ -73,7 +74,9 @@ public class UI {
             graph2.drawString("x " + gp.player.hasKey, 74, 65);
 
             // Time
-            playTime +=(double)1/60;
+            if(gp.gameState == gp.playState) {
+                playTime +=(double)1/60;
+            }
             graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*11, 65);
 
             // Message
@@ -89,6 +92,33 @@ public class UI {
                     messageOn = false;
                 }
             }
+
+            this.graph2 = graph2;
+
+            graph2.setFont(arial_40);
+            graph2.setColor(Color.white);
+
+            if(gp.gameState == gp.playState) {
+            }
+            if(gp.gameState == gp.pauseState) {
+                drawPauseScreen();
+            }
+
         }
+    }
+
+    public void drawPauseScreen() {
+        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 80));
+        String text = "PAUSED";
+        int x = xCenter(text);
+        int y = gp.screenHeight / 2;
+
+        graph2.drawString(text, x, y);
+    }
+
+    public int xCenter (String text) {
+        int length = (int)graph2.getFontMetrics().getStringBounds(text, graph2).getWidth();
+        int x = gp.screenWidth / 2 - length / 2;
+        return x;
     }
 }
