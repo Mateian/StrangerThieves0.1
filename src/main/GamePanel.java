@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenColumn;
     public final int screenHeight = tileSize * maxScreenRow;
+    public double forShowFPS = 0;
 
     // Setari ale Lumii
     public final int maxWorldColumn = 50;
@@ -96,7 +97,7 @@ public class GamePanel extends JPanel implements Runnable {
                 drawCount++;
             }
             if(timer >= 1000000000) {
-                System.out.println("FPS: " + drawCount);
+                forShowFPS = drawCount;
                 drawCount = 0;
                 timer = 0;
             }
@@ -104,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+
         if(gameState == playState) {
             player.update();
             for(int i = 0; i < NPC.length; ++i) {

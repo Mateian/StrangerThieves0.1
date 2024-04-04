@@ -88,7 +88,12 @@ public class Player extends Entity {
             int objectIndex = gp.cChecker.checkObject(this, true);
             pickUpObject(objectIndex);
 
-            // if collision is false, player can move
+            // Check NPC collision
+            int NPCIdx = gp.cChecker.checkEntity(this, gp.NPC);
+            intersectNPC(NPCIdx);
+
+            // Jucatorul nu poate "inainta" daca interactioneaza cu un obiect/tile
+            // cu coliziune
             if(!collisionOn) {
                 switch(direction) {
                     case "up":
@@ -105,6 +110,8 @@ public class Player extends Entity {
                         break;
                 }
             }
+
+            // Sprite changer
             spriteCounter++;
             if(spriteCounter > 10) {
                 if(spriteNumber == 0) {
@@ -163,6 +170,12 @@ public class Player extends Entity {
                     }
                     break;
             }
+        }
+    }
+
+    public void intersectNPC(int i) {
+        if(i != 999) {
+            System.out.println("You are hitting an NPC!");
         }
     }
 

@@ -9,7 +9,7 @@ import java.text.DecimalFormat;
 public class UI {
     Graphics2D graph2;
     GamePanel gp;
-    Font arial_40, arial_80B;
+    Font arial_40, arial_80B, console_40B;
     BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
@@ -23,6 +23,7 @@ public class UI {
     public UI(GamePanel gp) {
         this.gp = gp;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
+        console_40B = new Font("Console", Font.BOLD, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key(gp);
         keyImage = key.image;
@@ -103,7 +104,7 @@ public class UI {
             if(gp.gameState == gp.pauseState) {
                 drawPauseScreen();
             }
-
+            drawFPS(gp.forShowFPS);
         }
     }
 
@@ -113,7 +114,16 @@ public class UI {
         int x = xCenter(text);
         int y = gp.screenHeight / 2;
 
+
         graph2.drawString(text, x, y);
+    }
+
+    public void drawFPS(double FPS) {
+        graph2.setColor(Color.white);
+        graph2.setFont(console_40B);
+        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 20));
+        String text = "FPS: " + FPS;
+        graph2.drawString(text, gp.screenWidth - 2 * gp.tileSize, gp.originalTileSize);
     }
 
     public int xCenter (String text) {

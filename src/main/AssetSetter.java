@@ -51,6 +51,6 @@ public class AssetSetter {
     public void setNPC() {
         gp.NPC[0] = new NPC_Fen(gp);
         gp.NPC[0].worldx = gp.tileSize * 23;
-        gp.NPC[0].worldy = gp.tileSize * 30;
+        gp.NPC[0].worldy = gp.tileSize * 30 - 1;
     }
 }
