@@ -15,7 +15,7 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
-
+    public String dialogText = "";
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     UtilityTool tool = new UtilityTool();
@@ -105,7 +105,42 @@ public class UI {
                 drawPauseScreen();
             }
             drawFPS(gp.forShowFPS);
+
+            // Dialog State
+            if(gp.gameState == gp.dialogState) {
+                drawDialogScreen();
+            }
         }
+    }
+
+    public void drawDialogScreen() {
+        // Window - fereastra dialogului
+        int x = gp.tileSize * 2;
+        int y = gp.tileSize / 2;
+        int width = gp.screenWidth - 4 * gp.tileSize;
+        int height = gp.tileSize * 4;
+        drawSubWindow(x, y, width, height);
+
+        x += gp.tileSize;
+        y += gp.tileSize;
+        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 28));
+
+        for(String line : dialogText.split("\n")) {
+            graph2.drawString(line, x, y);
+            y += 40;
+        }
+    }
+
+    public void drawSubWindow(int x, int y, int width, int height) {
+        Color clr = new Color(0, 0 ,0, 210);
+        graph2.setColor(clr);
+        graph2.fillRoundRect(x, y, width, height, 35, 35);
+
+        clr = new Color(255, 255, 255);
+        graph2.setColor(clr);
+        graph2.setStroke(new BasicStroke(5));
+        graph2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
+
     }
 
     public void drawPauseScreen() {

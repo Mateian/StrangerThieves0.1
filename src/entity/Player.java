@@ -183,8 +183,12 @@ public class Player extends Entity {
 
     public void intersectNPC(int i) {
         if(i != 999) {
-            System.out.println("You are hitting an NPC!");
+            if(gp.keyH.ePressed) {
+                gp.gameState = gp.dialogState;
+                gp.NPC[i].talk();
+            }
         }
+        gp.keyH.ePressed = false;
     }
 
     public void draw(Graphics2D graph2) {

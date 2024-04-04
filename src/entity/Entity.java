@@ -19,6 +19,8 @@ public class Entity {
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    String dialogs[] = new String[25];
+    int dialogIndex = 0;
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -35,6 +37,32 @@ public class Entity {
             e.printStackTrace();
         }
         return image;
+    }
+
+//    De adaugat la clasele care au toate sprite-urile
+//    caracterului disponibile in toate directiile.
+
+    public void talk() {
+        if(dialogs[dialogIndex] == null) {
+            dialogIndex = 0;
+        }
+        gp.ui.dialogText = dialogs[dialogIndex];
+        dialogIndex++;
+
+        switch(gp.player.direction) {
+            case "up":
+                direction = "down";
+                break;
+            case "left":
+                direction = "right";
+                break;
+            case "down":
+                direction = "top";
+                break;
+            case "right":
+                direction = "left";
+                break;
+        }
     }
 
     public void draw(Graphics2D graph2) {

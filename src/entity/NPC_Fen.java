@@ -17,13 +17,14 @@ public class NPC_Fen extends Entity {
         direction = "down";
         speed = 1;
 
+        setDialog();
         getImage();
     }
 
     public void getImage() {
-        down = setup("/npc/fen_front");
-        down1 = setup("/npc/fen_scared_1");
-        down2 = setup("/npc/fen_scared_2");
+        up = left = right = down = setup("/npc/fen_front");
+        up1 = left1 = right1 = down1 = setup("/npc/fen_scared_1");
+        up2 = left2 = right2 = down2 = setup("/npc/fen_scared_2");
     }
 
     public void update() {
@@ -41,6 +42,7 @@ public class NPC_Fen extends Entity {
             spriteCounter = 0;
         }
     }
+
     public void draw(Graphics2D graph2) {
         BufferedImage image = null;
         int screenX = worldx - gp.player.worldx + gp.player.screenX;
@@ -95,5 +97,15 @@ public class NPC_Fen extends Entity {
             }
             graph2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         }
+    }
+
+    public void setDialog() {
+        dialogs[0] = "Skaaar!...SKAAR !!!";
+        dialogs[1] = "They are coming !!!";
+        dialogs[2] = "Skar, please save me!";
+    }
+
+    public void talk() {
+        super.talk();
     }
 }
