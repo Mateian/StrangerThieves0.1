@@ -17,6 +17,7 @@ public class Player extends Entity {
     public final int screenY;
 
     public int hasKey = 0;
+    public static boolean hasWeapon = false;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -153,6 +154,14 @@ public class Player extends Entity {
                     gp.ui.gameFinished = true;
                     gp.stopMusic();
                     gp.playSE(4);
+                    break;
+                case "Skargun":
+                    if(!hasWeapon) {
+                        System.out.println("You picked Skargun!");
+                        hasWeapon = true;
+                    } else {
+                        System.out.println("You already have a weapon!");
+                    }
                     break;
             }
         }

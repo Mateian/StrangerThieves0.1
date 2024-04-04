@@ -1,5 +1,7 @@
 package main;
 
+import entity.Player;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -28,6 +30,12 @@ public class KeyHandler implements KeyListener {
         }
         if(code == KeyEvent.VK_D) {
             rightPressed = true;
+        }
+        if(code == KeyEvent.VK_G) {
+            if(Player.hasWeapon) {
+                Player.hasWeapon = false;
+                System.out.println("Weapon dropped!");
+            }
         }
 
         // Debug

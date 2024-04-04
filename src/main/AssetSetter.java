@@ -1,9 +1,6 @@
 package main;
 
-import objects.OBJ_Boots;
-import objects.OBJ_Chest;
-import objects.OBJ_Door;
-import objects.OBJ_Key;
+import objects.*;
 
 public class AssetSetter {
     GamePanel gp;
@@ -44,5 +41,9 @@ public class AssetSetter {
         gp.obj[7] = new OBJ_Boots(gp);
         gp.obj[7].worldX = 37 * gp.tileSize;
         gp.obj[7].worldY = 42 * gp.tileSize;
+
+        gp.obj[8] = new OBJ_Skargun(gp);
+        gp.obj[8].worldX = 22 * gp.tileSize;
+        gp.obj[8].worldY = 30 * gp.tileSize;
     }
 }
