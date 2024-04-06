@@ -22,7 +22,7 @@ public class UI {
 
     public UI(GamePanel gp) {
         this.gp = gp;
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
+        arial_40 = new Font("Comic Sans MS", Font.PLAIN, 40);
         console_40B = new Font("Console", Font.BOLD, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key(gp);
@@ -123,6 +123,7 @@ public class UI {
 
         x += gp.tileSize;
         y += gp.tileSize;
+        graph2.setFont(arial_40);
         graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 28));
 
         for(String line : dialogText.split("\n")) {
