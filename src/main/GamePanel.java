@@ -48,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int playState = 1;
     public final int pauseState = 0;
     public final int dialogState = 2;
+    public final int menuState = 3;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -60,8 +61,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         aSetter.setObject();
         aSetter.setNPC();
-        playMusic(0);
-        gameState = playState;
+//        playMusic(0);
+        gameState = menuState;
     }
 
     public void startGame() {
@@ -129,27 +130,34 @@ public class GamePanel extends JPanel implements Runnable {
             drawStart = System.nanoTime();
         }
 
-        // tile
-        tileMng.draw(graph2);
+        // Menu
+        if(gameState == menuState) {
+            ui.draw(graph2);
+        } else {
 
-        // object
-        for(int i = 0; i < obj.length; ++i) {
-            if(obj[i] != null) {
-                obj[i].draw(graph2, this);
+        //  Tile
+            tileMng.draw(graph2);
+
+        //  Object
+            for(int i = 0; i < obj.length; ++i) {
+                if(obj[i] != null) {
+                    obj[i].draw(graph2, this);
+                }
             }
-        }
 
         // NPC
-        for(int i = 0; i < NPC.length; ++i) {
-            if(NPC[i] != null) {
-                NPC[i].draw(graph2);
+            for(int i = 0; i < NPC.length; ++i) {
+                if(NPC[i] != null) {
+                    NPC[i].draw(graph2);
+                }
             }
-        }
-            // player
-        player.draw(graph2);
 
-        // UI
-        ui.draw(graph2);
+            // player
+            player.draw(graph2);
+
+            // UI
+            ui.draw(graph2);
+        }
 
         // Debug
         if(keyH.checkDrawTime) {

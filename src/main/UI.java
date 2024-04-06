@@ -2,8 +2,10 @@ package main;
 
 import objects.OBJ_Key;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class UI {
@@ -16,6 +18,8 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String dialogText = "";
+    public int commandNumber = 0;
+
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     UtilityTool tool = new UtilityTool();
@@ -35,7 +39,7 @@ public class UI {
     }
 
     public void draw(Graphics2D graph2) {
-
+        this.graph2 = graph2;
         if(gameFinished) {
             graph2.setFont(arial_40);
             graph2.setColor(Color.white);
@@ -67,50 +71,105 @@ public class UI {
 
             gp.gameThread = null;
         } else {
-
-
-            graph2.setFont(arial_40);
-            graph2.setColor(Color.white);
-            graph2.drawImage(keyImage, 25, 25, gp.tileSize, gp.tileSize, null);
-            graph2.drawString("x " + gp.player.hasKey, 74, 65);
-
-            // Time
-            if(gp.gameState == gp.playState) {
-                playTime +=(double)1/60;
+            // Menu
+            if(gp.gameState == gp.menuState) {
+                drawMenu();
             }
-            graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*11, 65);
 
-            // Message
-            if(messageOn) {
 
-                graph2.setFont(graph2.getFont().deriveFont(30F));
-                graph2.drawString(message, gp.tileSize / 2, gp.tileSize * 5);
+            if(gp.gameState == gp.playState) {
+                graph2.setFont(arial_40);
+                graph2.setColor(Color.white);
+                graph2.drawImage(keyImage, 25, 25, gp.tileSize, gp.tileSize, null);
+                graph2.drawString("x " + gp.player.hasKey, 74, 65);
 
-                messageCounter++;
-
-                if(messageCounter > 120) {
-                    messageCounter = 0;
-                    messageOn = false;
+                // Time
+                if(gp.gameState == gp.playState) {
+                    playTime +=(double)1/60;
                 }
-            }
+                graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*11, 65);
 
-            this.graph2 = graph2;
+                // Message
+                if(messageOn) {
 
-            graph2.setFont(arial_40);
-            graph2.setColor(Color.white);
+                    graph2.setFont(graph2.getFont().deriveFont(30F));
+                    graph2.drawString(message, gp.tileSize / 2, gp.tileSize * 5);
 
-            if(gp.gameState == gp.playState) {
+                    messageCounter++;
+
+                    if(messageCounter > 120) {
+                        messageCounter = 0;
+                        messageOn = false;
+                    }
+                }
+
+                // FPS draw
+                drawFPS(gp.forShowFPS);
+
             }
             if(gp.gameState == gp.pauseState) {
                 drawPauseScreen();
             }
-            drawFPS(gp.forShowFPS);
-
             // Dialog State
             if(gp.gameState == gp.dialogState) {
                 drawDialogScreen();
             }
         }
+    }
+
+    public void drawMenu() {
+        // Background
+        try {
+            BufferedImage backGroundImage = ImageIO.read(getClass().getResourceAsStream("/icons/icon.png"));
+//            int width = backGroundImage.getWidth();
+//            int height = backGroundImage.getHeight();
+            graph2.drawImage(backGroundImage, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Game Name
+        graph2.setFont(graph2.getFont().deriveFont(Font.BOLD, 80F));
+        String name = "Stranger Thieves";
+        int x = xCenter(name);
+        int y = 4 * gp.tileSize;
+        graph2.setColor(Color.white);
+        graph2.drawString(name, x, y);
+
+        // Menu
+        String option;
+        graph2.setFont(graph2.getFont().deriveFont(Font.BOLD, gp.tileSize));
+
+        option = "New Game";
+        x = xCenter(option);
+        y += 3 * gp.tileSize;
+        if(commandNumber == 0) {
+            graph2.setColor(new Color(255, 255 ,255));
+            graph2.fillRect(x, y + 5, (int)graph2.getFontMetrics().getStringBounds(option, graph2).getWidth(), 2);
+        }
+        graph2.setColor(Color.white);
+        graph2.drawString(option, x, y);
+
+
+        option = "Load Game";
+        x = xCenter(option);
+        y += 10 + gp.tileSize;
+        if(commandNumber == 1) {
+            graph2.setColor(new Color(255, 255 ,255));
+            graph2.fillRect(x, y + 5, (int)graph2.getFontMetrics().getStringBounds(option, graph2).getWidth(), 2);
+        }
+        graph2.setColor(Color.white);
+        graph2.drawString(option, x, y);
+
+        option = "Quit";
+        x = xCenter(option);
+        y += 10 + gp.tileSize;
+        if(commandNumber == 2) {
+            graph2.setColor(new Color(255, 255 ,255));
+            graph2.fillRect(x, y + 5, (int)graph2.getFontMetrics().getStringBounds(option, graph2).getWidth(), 2);
+        }
+        graph2.setColor(Color.white);
+        graph2.drawString(option, x, y);
     }
 
     public void drawDialogScreen() {
