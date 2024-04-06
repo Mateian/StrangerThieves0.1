@@ -25,9 +25,69 @@ public class NPC_Fen extends Entity {
         up = left = right = down = setup("/npc/fen_front");
         up1 = left1 = right1 = down1 = setup("/npc/fen_scared_1");
         up2 = left2 = right2 = down2 = setup("/npc/fen_scared_2");
+
+//        Test pentru miscarea NPC-ului
+//        up = setup("/player/skar_back");
+//        up1 = setup("/player/skar_back_1");
+//        up2 = setup("/player/skar_back_2");
+//        down = setup("/player/skar_front");
+//        down1 = setup("/player/skar_front_1");
+//        down2 = setup("/player/skar_front_2");
+//        left = setup("/player/skar_left");
+//        left1 = setup("/player/skar_left_1");
+//        left2 = setup("/player/skar_left_2");
+//        right = setup("/player/skar_right");
+//        right1 = setup("/player/skar_right_1");
+//        right2 = setup("/player/skar_right_2");
     }
 
+//        Test pentru miscare NPC
+//        public void setAction() {
+//        actionCounter++;
+//
+//        if(actionCounter == 120) {
+//            Random random = new Random();
+//            int i = random.nextInt(100) + 1;
+//            System.out.println(i);
+//            if(i <= 25) {
+//                direction = "up";
+//            } else if(i > 25 && i <= 50) {
+//                direction = "left";
+//            } else if(i > 50 && i <= 75) {
+//                direction = "right";
+//            } else if(i > 75 && i <= 100) {
+//                direction = "down";
+//            }
+//            actionCounter = 0;
+//        }
+//    }
+
     public void update() {
+//        Test pentru miscare NPC
+//        setAction();
+
+//        // Collision
+//        collisionOn = false;
+//        gp.cChecker.checkTile(this);
+//        gp.cChecker.checkObject(this, false);
+//        gp.cChecker.checkPlayer(this);
+//        if(!collisionOn) {
+//            switch(direction) {
+//                case "up":
+//                    worldy -= speed;
+//                    break;
+//                case "down":
+//                    worldy += speed;
+//                    break;
+//                case "left":
+//                    worldx -= speed;
+//                    break;
+//                case "right":
+//                    worldx += speed;
+//                    break;
+//            }
+//        }
+
         // Sprite changer
         spriteCounter++;
         if (spriteCounter > 30) {
@@ -102,7 +162,7 @@ public class NPC_Fen extends Entity {
     public void setDialog() {
         dialogs[0] = "Skaaar!...SKAAR !!!";
         dialogs[1] = "They are coming !!!";
-        dialogs[2] = "Skar, please save me!";
+        dialogs[2] = "Skar, please save meaaaaaaaaaaa\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!";
     }
 
     public void talk() {
