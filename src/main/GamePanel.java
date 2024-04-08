@@ -3,6 +3,7 @@ package main;
 import entity.Entity;
 import entity.NPC_Fen;
 import entity.Player;
+import jdk.jfr.Event;
 import objects.SuperObject;
 import tiles.TileManager;
 
@@ -33,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
     Sound music = new Sound();
     Sound se = new Sound();
     public UI ui = new UI(this);
+    public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);

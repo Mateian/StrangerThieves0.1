@@ -47,6 +47,8 @@ public class Player extends Entity {
         worldy = gp.tileSize * 30 - 1;
         speed = 4;
         direction = "up";
+        maxLife = 6;
+        life = maxLife;
     }
 
     public void getImage() {
@@ -92,6 +94,9 @@ public class Player extends Entity {
             // Check NPC collision
             int NPCIdx = gp.cChecker.checkEntity(this, gp.NPC);
             intersectNPC(NPCIdx);
+
+            // Check Event
+            gp.eHandler.checkEvent();
 
             // Jucatorul nu poate "inainta" daca interactioneaza cu un obiect/tile
             // cu coliziune

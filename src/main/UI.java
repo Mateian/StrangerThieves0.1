@@ -1,6 +1,8 @@
 package main;
 
+import objects.OBJ_Heart;
 import objects.OBJ_Key;
+import objects.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,6 +14,7 @@ public class UI {
     Graphics2D graph2;
     GamePanel gp;
     Font arial_40, arial_80B, console_40B;
+    BufferedImage full_heart, half_heart, black_heart;
     BufferedImage keyImage;
     public boolean messageOn = false;
     public String message = "";
@@ -31,6 +34,12 @@ public class UI {
         arial_80B = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key(gp);
         keyImage = key.image;
+
+        // HUD
+        SuperObject heart = new OBJ_Heart(gp);
+        full_heart = heart.image;
+        half_heart = heart.image2;
+        black_heart = heart.image3;
     }
 
     public void showMessage(String text) {
@@ -106,6 +115,9 @@ public class UI {
                 // FPS draw
                 drawFPS(gp.forShowFPS);
 
+                // Player's Life
+                drawLife();
+
             }
             if(gp.gameState == gp.pauseState) {
                 drawPauseScreen();
@@ -115,6 +127,37 @@ public class UI {
                 drawDialogScreen();
             }
         }
+    }
+
+    public void drawLife() {
+
+        int x = gp.tileSize / 2;
+        int y = gp.screenHeight - gp.tileSize - 10;
+        int i = 0;
+
+        // Black Heart
+        while(i < gp.player.maxLife / 2) {
+            graph2.drawImage(black_heart, x, y, null);
+            ++i;
+            x += gp.tileSize + 10;
+        }
+
+        // Reset
+        x = gp.tileSize / 2;
+        y = gp.screenHeight - gp.tileSize - 10;
+        i = 0;
+
+        // Current Life
+        while(i < gp.player.life) {
+            graph2.drawImage(half_heart, x, y, null);
+            ++i;
+            if(i < gp.player.life) {
+                graph2.drawImage(full_heart, x, y, null);
+            }
+            ++i;
+            x += gp.tileSize + 10;
+        }
+
     }
 
     public void drawMenu() {
