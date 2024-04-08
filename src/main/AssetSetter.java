@@ -1,5 +1,6 @@
 package main;
 
+import enemy.MST_Enemy;
 import entity.NPC_Fen;
 import objects.*;
 
@@ -52,5 +53,19 @@ public class AssetSetter {
         gp.NPC[0] = new NPC_Fen(gp);
         gp.NPC[0].worldx = gp.tileSize * 23;
         gp.NPC[0].worldy = gp.tileSize * 30 - 1;
+    }
+
+    public void setMonster() {
+        gp.mst[0] = new MST_Enemy(gp);
+        gp.mst[0].worldx = gp.tileSize * 25;
+        gp.mst[0].worldy = gp.tileSize * 25;
+
+        gp.mst[1] = new MST_Enemy(gp);
+        gp.mst[1].worldx = gp.tileSize * 24;
+        gp.mst[1].worldy = gp.tileSize * 25;
+
+        gp.mst[2] = new MST_Enemy(gp);
+        gp.mst[2].worldx = gp.tileSize * 23;
+        gp.mst[2].worldy = gp.tileSize * 27;
     }
 }

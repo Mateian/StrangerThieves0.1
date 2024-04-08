@@ -95,6 +95,10 @@ public class Player extends Entity {
             int NPCIdx = gp.cChecker.checkEntity(this, gp.NPC);
             intersectNPC(NPCIdx);
 
+            // Check Monster collision
+            int monsterIndex = gp.cChecker.checkEntity(this, gp.mst);
+            damageFromMonster(monsterIndex);
+
             // Check Event
             gp.eHandler.checkEvent();
 
@@ -132,6 +136,23 @@ public class Player extends Entity {
             }
         } else {
             spriteNumber = 0;
+        }
+
+        if(invincible) {
+            invincibleCounter++;
+            if(invincibleCounter > 60) {
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
+    }
+
+    public void damageFromMonster(int i) {
+        if(i != 999) {
+            if(!invincible) {
+                life--;
+                invincible = true;
+            }
         }
     }
 
@@ -245,7 +266,17 @@ public class Player extends Entity {
                 }
                 break;
         }
+        if(invincible) {
+            graph2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+        }
+
         graph2.drawImage(image, screenX, screenY, null);
 
+        graph2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+
+        // Debug
+        graph2.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
+        graph2.setColor(Color.white);
+        graph2.drawString("Invincible: " + invincibleCounter, 10, 400);
     }
 }
