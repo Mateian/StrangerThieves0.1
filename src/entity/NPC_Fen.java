@@ -11,13 +11,21 @@ import java.util.Random;
 public class NPC_Fen extends Entity {
     public int spriteNumber = 1;
 
+
+
     public NPC_Fen(GamePanel gp) {
         super(gp);
 
         direction = "down";
         speed = 1;
+        solidArea.x = 0;
+        solidArea.y = 20;
+        solidArea.width = 48;
+        solidArea.height = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
 
-        setDialog();
+                setDialog();
         getImage();
     }
 

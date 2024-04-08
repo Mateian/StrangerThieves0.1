@@ -4,11 +4,14 @@ import entity.Entity;
 import entity.NPC_Fen;
 import entity.Player;
 import jdk.jfr.Event;
-import objects.SuperObject;
 import tiles.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class GamePanel extends JPanel implements Runnable {
     // Screen Settings - standard
@@ -41,8 +44,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     // Entities & Objects
     public Player player = new Player(this, keyH);
-    public SuperObject[] obj = new SuperObject[10];
+    public Entity[] obj = new Entity[10];
     public Entity[] NPC = new Entity[10];
+    ArrayList<Entity> entityList = new ArrayList<>();
 
 
     // Game State
@@ -118,6 +122,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
         }
+        if(gameState == pauseState) {
+            ui.drawPauseScreen();
+        }
     }
 
     public void paintComponent(Graphics graph) {
@@ -140,22 +147,36 @@ public class GamePanel extends JPanel implements Runnable {
         //  Tile
             tileMng.draw(graph2);
 
-        //  Object
-            for(int i = 0; i < obj.length; ++i) {
-                if(obj[i] != null) {
-                    obj[i].draw(graph2, this);
-                }
-            }
+        //  Add all entities in the List
+            entityList.add(player);
 
-        // NPC
             for(int i = 0; i < NPC.length; ++i) {
                 if(NPC[i] != null) {
-                    NPC[i].draw(graph2);
+                    entityList.add(NPC[i]);
+                }
+            }
+            for(int i = 0; i < obj.length; ++i) {
+                if(obj[i] != null) {
+                    entityList.add(obj[i]);
                 }
             }
 
-            // player
-            player.draw(graph2);
+            // Sort
+            Collections.sort(entityList, new Comparator<Entity>() {
+                @Override
+                public int compare(Entity e1, Entity e2) {
+                    int result = Integer.compare(e1.worldy, e2.worldy);
+                    return result;
+                }
+            });
+
+            // Draw Entities
+            for(int i = 0; i < entityList.size(); ++i) {
+                entityList.get(i).draw(graph2);
+            }
+
+            // Empty Entity List
+            entityList.clear();
 
             // UI
             ui.draw(graph2);

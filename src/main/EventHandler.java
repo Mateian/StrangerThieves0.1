@@ -62,6 +62,7 @@ public class EventHandler {
         gp.gameState = gameState;
         gp.ui.dialogText = "Ai luat heal!";
         gp.player.life = gp.player.maxLife;
+        canTouchEvent = false;
     }
 
     public boolean hit(int column, int row, String direction) {

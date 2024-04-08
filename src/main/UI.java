@@ -1,8 +1,8 @@
 package main;
 
+import entity.Entity;
 import objects.OBJ_Heart;
 import objects.OBJ_Key;
-import objects.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -33,10 +33,10 @@ public class UI {
         console_40B = new Font("Console", Font.BOLD, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
         OBJ_Key key = new OBJ_Key(gp);
-        keyImage = key.image;
+        keyImage = key.down;
 
         // HUD
-        SuperObject heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         full_heart = heart.image;
         half_heart = heart.image2;
         black_heart = heart.image3;
@@ -247,6 +247,7 @@ public class UI {
     }
 
     public void drawPauseScreen() {
+        graph2.setColor(Color.white);
         graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 80));
         String text = "PAUSED";
         int x = xCenter(text);

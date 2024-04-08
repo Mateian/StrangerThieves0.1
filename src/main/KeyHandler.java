@@ -91,19 +91,18 @@ public class KeyHandler implements KeyListener {
         }
 
         // Pause State
-        if(gp.gameState == gp.pauseState) {
+        else if(gp.gameState == gp.pauseState) {
             if(code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.playState;
             }
         }
 
         // Dialog State
-        if(gp.gameState == gp.dialogState) {
+        else if(gp.gameState == gp.dialogState) {
             if(code == KeyEvent.VK_E) {
                 gp.gameState = gp.playState;
             }
         }
-
     }
 
     @Override

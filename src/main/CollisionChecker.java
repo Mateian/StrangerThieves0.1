@@ -66,8 +66,8 @@ public class CollisionChecker {
                 entity.solidArea.y = entity.worldy + entity.solidArea.y;
 
                 // Pozitia solida a obiectelor
-                gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
-                gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
+                gp.obj[i].solidArea.x = gp.obj[i].worldx + gp.obj[i].solidArea.x;
+                gp.obj[i].solidArea.y = gp.obj[i].worldy + gp.obj[i].solidArea.y;
 
                 switch(entity.direction) {
                     case "up":
