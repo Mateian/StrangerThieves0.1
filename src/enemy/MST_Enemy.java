@@ -6,8 +6,11 @@ import main.GamePanel;
 import java.util.Random;
 
 public class MST_Enemy extends Entity {
+    GamePanel gp;
     public MST_Enemy(GamePanel gp) {
         super(gp);
+
+        this.gp = gp;
 
         spriteNumber = 1;
         name = "Enemy";
@@ -27,14 +30,14 @@ public class MST_Enemy extends Entity {
     }
 
     public void getImage() {
-        up1 = setup("/enemy/enemy_back_1");
-        up2 = setup("/enemy/enemy_back_2");
-        down1 = setup("/enemy/enemy_front_1");
-        down2 = setup("/enemy/enemy_front_2");
-        left1 = setup("/enemy/enemy_left_1");
-        left2 = setup("/enemy/enemy_left_2");
-        right1 = setup("/enemy/enemy_right_1");
-        right2 = setup("/enemy/enemy_right_2");
+        up1 = setup("/enemy/enemy_back_1", gp.tileSize, gp.tileSize);
+        up2 = setup("/enemy/enemy_back_2", gp.tileSize, gp.tileSize);
+        down1 = setup("/enemy/enemy_front_1", gp.tileSize, gp.tileSize);
+        down2 = setup("/enemy/enemy_front_2", gp.tileSize, gp.tileSize);
+        left1 = setup("/enemy/enemy_left_1", gp.tileSize, gp.tileSize);
+        left2 = setup("/enemy/enemy_left_2", gp.tileSize, gp.tileSize);
+        right1 = setup("/enemy/enemy_right_1", gp.tileSize, gp.tileSize);
+        right2 = setup("/enemy/enemy_right_2", gp.tileSize, gp.tileSize);
     }
 
     public void setAction() {
