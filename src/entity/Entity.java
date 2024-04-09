@@ -22,8 +22,10 @@ public class Entity {
     boolean attacking = false;
     public boolean alive = true;
     public boolean dead = false;
+    boolean toggleHpBar = false;
     public int invincibleCounter = 0;
     int deadCounter = 0;
+    int barCounter = 0;
 
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
@@ -135,16 +137,39 @@ public class Entity {
                     }
                     break;
             }
-            if(invincible) {
-                graph2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
+
+            // Enemy HP
+            if(type == 2 && toggleHpBar) {
+                double oneScale = (double) gp.tileSize / maxLife;
+                double hpBar = oneScale * life;
+
+                // Background bar
+                graph2.setColor(new Color(0, 0, 0));
+                graph2.fillRect(screenX - 1, screenY - 16, gp.tileSize + 2, 12);
+
+                // Health bar
+                graph2.setColor(new Color(255, 0, 0));
+                graph2.fillRect(screenX, screenY - 15, (int)hpBar, 10);
+
+                barCounter++;
+                if(barCounter > 300) {
+                    barCounter = 0;
+                    toggleHpBar = false;
+                }
             }
 
+            if(invincible) {
+                toggleHpBar = true;
+                barCounter = 0;
+                changeAlpha(graph2, 0.5f);
+            }
             if(dead == true) {
                 deadAnim(graph2);
             }
             graph2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
             graph2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            changeAlpha(graph2, 1f);
         }
     }
     public void deadAnim(Graphics2D graph2) {
@@ -183,6 +208,8 @@ public class Entity {
     }
     public void setAction() {
     }
+
+    public void dmgReact() {}
 
 //    Functie de adaugat in clasele in care se doreste implementarea AI-ului
 

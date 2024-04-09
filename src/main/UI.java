@@ -1,5 +1,6 @@
 package main;
 
+import enemy.MST_Enemy;
 import entity.Entity;
 import objects.OBJ_Heart;
 import objects.OBJ_Key;
@@ -15,7 +16,7 @@ public class UI {
     GamePanel gp;
     Font arial_40, arial_80B, console_40B;
     BufferedImage full_heart, half_heart, black_heart;
-    BufferedImage keyImage;
+    BufferedImage enemyImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -32,8 +33,8 @@ public class UI {
         arial_40 = new Font("Comic Sans MS", Font.PLAIN, 40);
         console_40B = new Font("Console", Font.BOLD, 40);
         arial_80B = new Font("Arial", Font.BOLD, 80);
-        OBJ_Key key = new OBJ_Key(gp);
-        keyImage = key.down;
+        MST_Enemy enemy = new MST_Enemy(gp);
+        enemyImage = enemy.down1;
 
         // HUD
         Entity heart = new OBJ_Heart(gp);
@@ -89,8 +90,8 @@ public class UI {
             if(gp.gameState == gp.playState) {
                 graph2.setFont(arial_40);
                 graph2.setColor(Color.white);
-                graph2.drawImage(keyImage, 25, 25, gp.tileSize, gp.tileSize, null);
-                graph2.drawString("x " + gp.player.hasKey, 74, 65);
+                graph2.drawImage(enemyImage, 25, 25, gp.tileSize, gp.tileSize, null);
+                graph2.drawString(gp.lvl1ObjectiveCounter + " | " + gp.lvl1Objective, 74, 65);
 
                 // Time
                 if(gp.gameState == gp.playState) {
@@ -128,7 +129,11 @@ public class UI {
             }
         }
     }
-
+    public void drawWin() {
+        graph2.setFont(arial_40);
+        graph2.setColor(Color.white);
+        graph2.drawString("Level 1 Completed", xCenter("Level 1 Completed"), gp.screenHeight / 2);
+    }
     public void drawLife() {
 
         int x = gp.tileSize / 2;

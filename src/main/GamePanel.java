@@ -56,6 +56,12 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 0;
     public final int dialogState = 2;
     public final int menuState = 3;
+    public final int lvl1CompleteState = 4;
+
+    // Objectives
+    public boolean lvl1Completion = false;
+    public int lvl1ObjectiveCounter = 0;
+    public int lvl1Objective = 3;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -137,6 +143,9 @@ public class GamePanel extends JPanel implements Runnable {
         if(gameState == pauseState) {
             ui.drawPauseScreen();
         }
+        if(lvl1ObjectiveCounter == lvl1Objective) {
+            gameState = lvl1CompleteState;
+        }
     }
 
     public void paintComponent(Graphics graph) {
@@ -197,6 +206,10 @@ public class GamePanel extends JPanel implements Runnable {
 
             // UI
             ui.draw(graph2);
+        }
+
+        if(gameState == lvl1CompleteState) {
+            ui.drawWin();
         }
 
         // Debug

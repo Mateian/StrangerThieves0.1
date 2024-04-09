@@ -222,10 +222,15 @@ public class Player extends Entity {
                 gp.playSE(5);
                 gp.mst[i].life--;
                 gp.mst[i].invincible = true;
+                gp.mst[i].dmgReact();
 
                 if(gp.mst[i].life <= 0) {
                     gp.mst[i].dead = true;
                     gp.playSE(6);
+                    gp.lvl1ObjectiveCounter++;
+                    if(gp.lvl1ObjectiveCounter == gp.lvl1Objective) {
+                        gp.lvl1Completion = true;
+                    }
                 }
             }
         }

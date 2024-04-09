@@ -58,4 +58,8 @@ public class MST_Enemy extends Entity {
             actionCounter = 0;
         }
     }
+    public void dmgReact() {
+        actionCounter = 0;
+        direction = gp.player.direction;
+    }
 }
