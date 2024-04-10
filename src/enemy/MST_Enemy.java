@@ -2,6 +2,7 @@ package enemy;
 
 import entity.Entity;
 import main.GamePanel;
+import objects.OBJ_Bullet;
 
 import java.util.Random;
 
@@ -18,6 +19,7 @@ public class MST_Enemy extends Entity {
         maxLife = 4;
         life = maxLife;
         type = 2;
+        projectile = new OBJ_Bullet(gp);
 
         solidArea.x = 3;
         solidArea.y = 10;
@@ -56,6 +58,12 @@ public class MST_Enemy extends Entity {
                 direction = "down";
             }
             actionCounter = 0;
+        }
+        int i = new Random().nextInt(100) + 1;
+        if(i > 99 && !projectile.alive && shotCounter == 30) {
+            projectile.set(worldx, worldy, direction, true, this);
+            gp.projectileList.add(projectile);
+            shotCounter = 0;
         }
     }
     public void dmgReact() {

@@ -9,6 +9,7 @@ public class KeyHandler implements KeyListener {
     GamePanel gp;
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     public boolean ePressed;
+    public boolean shotPressed;
 
     // Debug
     public boolean toggleDebugInfo = false;
@@ -79,6 +80,9 @@ public class KeyHandler implements KeyListener {
                     System.out.println("Weapon dropped!");
                 }
             }
+            if(code == KeyEvent.VK_SPACE) {
+                shotPressed = true;
+            }
 
             // Debug
             if(code == KeyEvent.VK_T) {
@@ -123,6 +127,9 @@ public class KeyHandler implements KeyListener {
         }
         if(code == KeyEvent.VK_D) {
             rightPressed = false;
+        }
+        if(code == KeyEvent.VK_SPACE) {
+            shotPressed = false;
         }
     }
 }

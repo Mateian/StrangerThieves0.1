@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 public class Entity {
     GamePanel gp;
     public int worldx, worldy;
-    public int speed;
     public BufferedImage up, up1, up2, left, left1, left2, down, down1, down2, right, right1, right2;
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     public String direction = "down";
@@ -26,6 +25,7 @@ public class Entity {
     public int invincibleCounter = 0;
     int deadCounter = 0;
     int barCounter = 0;
+    public int shotCounter = 0;
 
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
@@ -34,13 +34,21 @@ public class Entity {
     String dialogs[] = new String[25];
     int dialogIndex = 0;
     public BufferedImage image, image2, image3;
-    public String name;
     public boolean collision = false;
     public int type; // 0 - player, 1 - npc, 2 - monster
 
     // Character Status
+    public String name;
     public int maxLife;
     public int life;
+    public int speed;
+    public int attack = 0;
+    public int defense = 0;
+    public int maxMana;
+    public int mana;
+    public Projectile projectile;
+    public int useCost;
+
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -199,7 +207,6 @@ public class Entity {
             changeAlpha(graph2,0f);
         }
         if(deadCounter > i * 7) {
-            dead = false;
             alive = false;
         }
     }
@@ -246,10 +253,7 @@ public class Entity {
         boolean contactPlayer = gp.cChecker.checkPlayer(this);
 
         if (this.type == 2 && contactPlayer) {
-            if (!gp.player.invincible) {
-                gp.player.life--;
-                gp.player.invincible = true;
-            }
+            dmgPlayer(attack);
         }
 
         if (!collisionOn) {
@@ -285,6 +289,20 @@ public class Entity {
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+        if(shotCounter < 30) {
+            shotCounter++;
+        }
+    }
+
+    public void dmgPlayer(int attack) {
+        if (!gp.player.invincible) {
+            int damage = attack - gp.player.defense;
+            if(damage < 0) {
+                damage = 0;
+            }
+            gp.player.life--;
+            gp.player.invincible = true;
         }
     }
 }

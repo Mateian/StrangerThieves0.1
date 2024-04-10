@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 import main.UtilityTool;
+import objects.OBJ_Bullet;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -52,6 +53,7 @@ public class Player extends Entity {
         direction = "up";
         maxLife = 6;
         life = maxLife;
+        projectile = new OBJ_Bullet(gp);
     }
 
     public void getImage() {
@@ -159,12 +161,24 @@ public class Player extends Entity {
             spriteNumber = 0;
         }
 
+        if(gp.keyH.shotPressed && !projectile.alive && shotCounter == 30) {
+            projectile.set(worldx, worldy, direction, true, this);
+
+            gp.projectileList.add(projectile);
+
+            shotCounter = 0;
+        }
+
         if(invincible) {
             invincibleCounter++;
             if(invincibleCounter > 60) {
                 invincible = false;
                 invincibleCounter = 0;
             }
+        }
+
+        if(shotCounter < 30) {
+            shotCounter++;
         }
     }
 
@@ -203,7 +217,7 @@ public class Player extends Entity {
 
             // Verifica daca exista un inamic in zona
             int mstIndex = gp.cChecker.checkEntity(this, gp.mst);
-            damageEnemy(mstIndex);
+            damageEnemy(mstIndex, attack);
 
             worldx = currentWorldX;
             worldy = currentWorldY;
@@ -216,11 +230,18 @@ public class Player extends Entity {
             attacking = false;
         }
     }
-    public void damageEnemy(int i) {
+    public void damageEnemy(int i, int attack) {
         if(i != 999) {
-            if(!gp.mst[i].invincible) {
+            if(!gp.mst[i].invincible && !gp.mst[i].dead) {
                 gp.playSE(5);
-                gp.mst[i].life--;
+
+                int damage = attack - gp.mst[i].defense;
+                if(damage < 0) {
+                    damage = 0;
+                }
+
+                gp.mst[i].life -= damage;
+
                 gp.mst[i].invincible = true;
                 gp.mst[i].dmgReact();
 
