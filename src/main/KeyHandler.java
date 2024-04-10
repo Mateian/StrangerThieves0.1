@@ -11,7 +11,7 @@ public class KeyHandler implements KeyListener {
     public boolean ePressed;
 
     // Debug
-    public boolean checkDrawTime = false;
+    public boolean toggleDebugInfo = false;
 
     public KeyHandler(GamePanel gp) {
         this.gp = gp;
@@ -82,11 +82,14 @@ public class KeyHandler implements KeyListener {
 
             // Debug
             if(code == KeyEvent.VK_T) {
-                if(!checkDrawTime) {
-                    checkDrawTime = true;
+                if(!toggleDebugInfo) {
+                    toggleDebugInfo = true;
                 } else {
-                    checkDrawTime = false;
+                    toggleDebugInfo = false;
                 }
+            }
+            if(code == KeyEvent.VK_R) {
+                gp.tileMng.loadMap("/maps/level01.txt");
             }
         }
 
