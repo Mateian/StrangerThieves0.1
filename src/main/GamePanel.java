@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     int FPS = 60;
 
     // System
-    TileManager tileMng = new TileManager(this);
+    public TileManager tileMng = new TileManager(this);
     public KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, keyH);
     public Entity[] obj = new Entity[10];
     public Entity[] NPC = new Entity[10];
-    public Entity[] mst = new Entity[20];
+    public Entity[] mst = new Entity[30];
     ArrayList<Entity> entityList = new ArrayList<>();
     public ArrayList<Entity> projectileList = new ArrayList<>();
 
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Objectives
     public boolean lvl1Completion = false;
     public int lvl1ObjectiveCounter = 0;
-    public int lvl1Objective = 3;
+    public int lvl1Objective = 25;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));

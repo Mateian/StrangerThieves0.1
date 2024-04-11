@@ -36,6 +36,7 @@ public class Entity {
     public BufferedImage image, image2, image3;
     public boolean collision = false;
     public int type; // 0 - player, 1 - npc, 2 - monster
+    public boolean onPath = false;
 
     // Character Status
     public String name;
