@@ -1,7 +1,11 @@
 package PaooGame.main;
 
+import PaooGame.Game;
+import PaooGame.tiles.Tile;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class UtilityTool {
 
@@ -13,5 +17,9 @@ public class UtilityTool {
         graph2.dispose();
 
         return scaledImage;
+    }
+
+    public BufferedImage crop(BufferedImage spriteSheet, int x, int y, int tileWidth, int tileHeight) {
+        return spriteSheet.getSubimage(x, y, tileWidth, tileHeight);
     }
 }

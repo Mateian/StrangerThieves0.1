@@ -5,7 +5,9 @@ import PaooGame.main.UtilityTool;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -15,40 +17,48 @@ public class TileManager {
 
     // Tile Array - all tiles in one array
     public Tile[] tile;
-
+    // Tile SpriteSheet
+    public BufferedImage spriteSheet;
     // Map - a matrix with all tiles ID placed all over the width X height map
     public int[][] mapTile;
 
     public TileManager(Game gp) {
         this.gp = gp;
         tile = new Tile[20];
+        try {
+            spriteSheet = ImageIO.read(getClass().getResourceAsStream("/tiles/level01/map01Tiles.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         mapTile = new int[gp.maxWorldColumn][gp.maxWorldRow];
+
         getTileImage();
         loadMap("/maps/level01.txt");
     }
 
     public void getTileImage() {
-        setup(0, "grass", false);
-        setup(1, "gravel", false);
-        setup(2, "tree", true);
-        setup(3, "house_door_reversed", true);
-        setup(4, "house_wall", true);
-        setup(5, "planks", false);
-        setup(6, "roof_left", true);
-        setup(7, "roof_middle", true);
-        setup(8, "roof_right", true);
-        setup(9, "stairs", false);
-        setup(10, "plank_fence", true);
-        setup(11, "grass_fence", true);
-        setup(12, "hidden_chest", false);
-        setup(13, "flower_bush", false);
+        setup(13, 0, 0, "flower_bush", false);
+        setup(0, 1, 0, "grass", false);
+        setup(11, 2, 0, "grass_fence", true);
+        setup(1, 3, 0, "gravel", false);
+        setup(12, 4, 0, "hidden_chest", false);
+        setup(3, 5, 0, "house_door_reversed", true);
+        setup(4, 6, 0, "house_wall", true);
+        setup(10, 7, 0, "plank_fence", true);
+        setup(5, 8, 0, "planks", false);
+        setup(6, 9, 0, "roof_left", true);
+        setup(7, 10, 0, "roof_middle", true);
+        setup(8, 11, 0, "roof_right", true);
+        setup(9, 12, 0, "stairs", false);
+        setup(2, 13, 0, "tree", true);
     }
 
-    public void setup(int index, String imageName, boolean collision) {
+    public void setup(int index, int indexX, int indexY, String imageName, boolean collision) {
         UtilityTool tool = new UtilityTool();
         try {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/level01/" + imageName +".png"));
+            tile[index].image = tool.crop(spriteSheet, gp.originalTileSize * indexX, gp.originalTileSize * indexY, gp.originalTileSize, gp.originalTileSize);
             tile[index].image = tool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch(Exception e) {
