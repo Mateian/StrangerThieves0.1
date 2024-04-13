@@ -6,6 +6,8 @@ import PaooGame.main.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class Player extends Entity {
 
@@ -14,6 +16,8 @@ public class Player extends Entity {
 
     // Images
     public BufferedImage up, down, left, right;
+    public BufferedImage weapUp, weapUp1, weapDown, weapDown1, weapLeft, weapLeft1, weapRight, weapRight1;
+    ArrayList<BufferedImage> defArray = new ArrayList<>();
 
     // Position
     public final int screenX;
@@ -85,6 +89,16 @@ public class Player extends Entity {
         attackLeft2 = setup(5, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
         attackRight1 = setup(6, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
         attackRight2 = setup(7, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+
+        // Armed Images
+        weapUp = setup(27, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapUp1 = setup(26, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapDown = setup(25, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapDown1 = setup(24, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapLeft = setup(23, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapLeft1 = setup(22, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapRight = setup(21, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        weapRight1 = setup(20, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
     }
 
     public void update() {
@@ -340,14 +354,26 @@ public class Player extends Entity {
         switch(direction) {
             case "up":
                 if(!attacking) {
-                    if(spriteNumber == 0) {
-                        image = up;
-                    }
-                    if(spriteNumber == 1) {
-                        image = up1;
-                    }
-                    if(spriteNumber == 2) {
-                        image = up2;
+                    if(hasWeapon) {
+                        if(spriteNumber == 0) {
+                            image = weapUp;
+                        }
+                        if(spriteNumber == 1) {
+                            image = weapUp1;
+                        }
+                        if(spriteNumber == 2){
+                            image = weapUp;
+                        }
+                    } else {
+                        if (spriteNumber == 0) {
+                            image = up;
+                        }
+                        if (spriteNumber == 1) {
+                            image = up1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = up2;
+                        }
                     }
                 }
                 if(attacking) {
@@ -364,14 +390,26 @@ public class Player extends Entity {
                 break;
             case "down":
                 if(!attacking) {
-                    if(spriteNumber == 0) {
-                        image = down;
-                    }
-                    if(spriteNumber == 1) {
-                        image = down1;
-                    }
-                    if(spriteNumber == 2) {
-                        image = down2;
+                    if(hasWeapon) {
+                        if(spriteNumber == 0) {
+                            image = weapDown;
+                        }
+                        if(spriteNumber == 1) {
+                            image = weapDown1;
+                        }
+                        if(spriteNumber == 2){
+                            image = weapDown;
+                        }
+                    } else {
+                        if (spriteNumber == 0) {
+                            image = down;
+                        }
+                        if (spriteNumber == 1) {
+                            image = down1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = down2;
+                        }
                     }
                 }
                 if(attacking) {
@@ -388,14 +426,26 @@ public class Player extends Entity {
                 break;
             case "left":
                 if(!attacking) {
-                    if(spriteNumber == 0) {
-                        image = left;
-                    }
-                    if(spriteNumber == 1) {
-                        image = left1;
-                    }
-                    if(spriteNumber == 2) {
-                        image = left2;
+                    if(hasWeapon) {
+                        if(spriteNumber == 0) {
+                            image = weapLeft;
+                        }
+                        if(spriteNumber == 1) {
+                            image = weapLeft1;
+                        }
+                        if(spriteNumber == 2){
+                            image = weapLeft;
+                        }
+                    } else {
+                        if (spriteNumber == 0) {
+                            image = left;
+                        }
+                        if (spriteNumber == 1) {
+                            image = left1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = left2;
+                        }
                     }
                 }
                 if(attacking) {
@@ -412,14 +462,26 @@ public class Player extends Entity {
                 break;
             case "right":
                 if(!attacking) {
-                    if(spriteNumber == 0) {
-                        image = right;
-                    }
-                    if(spriteNumber == 1) {
-                        image = right1;
-                    }
-                    if(spriteNumber == 2) {
-                        image = right2;
+                    if(hasWeapon) {
+                        if(spriteNumber == 0) {
+                            image = weapRight;
+                        }
+                        if(spriteNumber == 1) {
+                            image = weapRight1;
+                        }
+                        if(spriteNumber == 2){
+                            image = weapRight;
+                        }
+                    } else {
+                        if (spriteNumber == 0) {
+                            image = right;
+                        }
+                        if (spriteNumber == 1) {
+                            image = right1;
+                        }
+                        if (spriteNumber == 2) {
+                            image = right2;
+                        }
                     }
                 }
                 if(attacking) {
