@@ -80,7 +80,6 @@ public class Game extends JPanel implements Runnable {
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
-//        playMusic(0);
         gameState = menuState;
     }
 
