@@ -19,7 +19,7 @@ public class UtilityTool {
         return scaledImage;
     }
 
-    public BufferedImage crop(BufferedImage spriteSheet, int x, int y, int tileWidth, int tileHeight) {
+    public BufferedImage cropImage(BufferedImage spriteSheet, int x, int y, int tileWidth, int tileHeight) {
         return spriteSheet.getSubimage(x, y, tileWidth, tileHeight);
     }
 }

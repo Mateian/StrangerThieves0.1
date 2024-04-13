@@ -58,7 +58,7 @@ public class TileManager {
         UtilityTool tool = new UtilityTool();
         try {
             tile[index] = new Tile();
-            tile[index].image = tool.crop(spriteSheet, gp.originalTileSize * indexX, gp.originalTileSize * indexY, gp.originalTileSize, gp.originalTileSize);
+            tile[index].image = tool.cropImage(spriteSheet, gp.originalTileSize * indexX, gp.originalTileSize * indexY, gp.originalTileSize, gp.originalTileSize);
             tile[index].image = tool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
         } catch(Exception e) {
