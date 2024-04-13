@@ -1,5 +1,4 @@
-package main;
-import java.awt.*;
+package PaooGame.main;
 
 public class EventHandler {
     GamePanel gp;

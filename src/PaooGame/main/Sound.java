@@ -1,4 +1,4 @@
-package main;
+package PaooGame.main;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

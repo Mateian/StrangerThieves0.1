@@ -1,12 +1,9 @@
-package entity;
+package PaooGame.entity;
 
-import main.GamePanel;
-import main.UtilityTool;
+import PaooGame.main.GamePanel;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Random;
 
 public class NPC_Fen extends Entity {
     public int spriteNumber = 1;

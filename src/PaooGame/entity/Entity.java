@@ -1,7 +1,7 @@
-package entity;
+package PaooGame.entity;
 
-import main.GamePanel;
-import main.UtilityTool;
+import PaooGame.main.UtilityTool;
+import PaooGame.main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

@@ -1,9 +1,8 @@
-package main;
+package PaooGame.main;
 
-import enemy.MST_Enemy;
-import entity.Entity;
-import objects.OBJ_Heart;
-import objects.OBJ_Key;
+import PaooGame.enemy.MST_Enemy;
+import PaooGame.entity.Entity;
+import PaooGame.objects.OBJ_Heart;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

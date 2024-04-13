@@ -1,6 +1,6 @@
-package entity;
+package PaooGame.entity;
 
-import main.GamePanel;
+import PaooGame.main.GamePanel;
 
 public class Projectile extends Entity {
     Entity ent;

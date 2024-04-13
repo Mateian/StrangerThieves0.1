@@ -1,8 +1,8 @@
-package main;
+package PaooGame.main;
 
-import enemy.MST_Enemy;
-import entity.NPC_Fen;
-import objects.*;
+import PaooGame.enemy.MST_Enemy;
+import PaooGame.entity.NPC_Fen;
+import PaooGame.objects.*;
 
 public class AssetSetter {
     GamePanel gp;

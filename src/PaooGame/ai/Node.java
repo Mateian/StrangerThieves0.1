@@ -1,4 +1,4 @@
-package ai;
+package PaooGame.ai;
 
 public class Node {
     Node parent;

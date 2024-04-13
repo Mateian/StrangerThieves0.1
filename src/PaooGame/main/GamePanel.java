@@ -1,15 +1,12 @@
-package main;
+package PaooGame.main;
 
-import entity.Entity;
-import entity.NPC_Fen;
-import entity.Player;
-import jdk.jfr.Event;
-import tiles.TileManager;
+import PaooGame.entity.Entity;
+import PaooGame.entity.Player;
+import PaooGame.tiles.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 

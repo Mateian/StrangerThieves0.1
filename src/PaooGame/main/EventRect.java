@@ -1,4 +1,4 @@
-package main;
+package PaooGame.main;
 
 import java.awt.*;
 

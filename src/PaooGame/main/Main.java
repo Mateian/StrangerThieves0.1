@@ -1,9 +1,6 @@
-package main;
+package PaooGame.main;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.util.Objects;
 
 import static java.lang.System.getProperty;
 

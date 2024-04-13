@@ -1,8 +1,8 @@
-package enemy;
+package PaooGame.enemy;
 
-import entity.Entity;
-import main.GamePanel;
-import objects.OBJ_Bullet;
+import PaooGame.objects.OBJ_Bullet;
+import PaooGame.entity.Entity;
+import PaooGame.main.GamePanel;
 
 import java.util.Random;
 

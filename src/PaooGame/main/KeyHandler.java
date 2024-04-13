@@ -1,6 +1,6 @@
-package main;
+package PaooGame.main;
 
-import entity.Player;
+import PaooGame.entity.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

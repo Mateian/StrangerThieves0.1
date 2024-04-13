@@ -1,4 +1,4 @@
-package tiles;
+package PaooGame.tiles;
 
 import java.awt.image.BufferedImage;
 

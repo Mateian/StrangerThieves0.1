@@ -1,7 +1,7 @@
-package objects;
+package PaooGame.objects;
 
-import entity.Projectile;
-import main.GamePanel;
+import PaooGame.entity.Projectile;
+import PaooGame.main.GamePanel;
 
 public class OBJ_Bullet extends Projectile {
     GamePanel gp;

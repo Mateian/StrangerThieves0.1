@@ -1,10 +1,7 @@
-package objects;
+package PaooGame.objects;
 
-import entity.Entity;
-import main.GamePanel;
-
-import javax.imageio.ImageIO;
-import java.io.IOException;
+import PaooGame.entity.Entity;
+import PaooGame.main.GamePanel;
 
 public class OBJ_Door extends Entity {
     public OBJ_Door(GamePanel gp) {

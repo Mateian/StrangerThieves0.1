@@ -1,6 +1,6 @@
-package main;
+package PaooGame.main;
 
-import entity.Entity;
+import PaooGame.entity.Entity;
 
 public class CollisionChecker {
     GamePanel gp;
