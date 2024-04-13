@@ -19,6 +19,7 @@ public class Game extends JPanel implements Runnable {
     public final int tileSize = originalTileSize * scale;
 
     // Screen Settings - standard
+    GameWindow wnd;
     public final int maxScreenColumn = 16;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenColumn;
@@ -65,6 +66,7 @@ public class Game extends JPanel implements Runnable {
     public int lvl1Objective = 25;
 
     public Game() {
+        wnd = new GameWindow("Stranger Thieves", screenWidth, screenHeight, this);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
@@ -73,6 +75,8 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void setupGame() {
+        wnd = new GameWindow("Stranger Thieves", tileSize * maxScreenColumn, tileSize * maxScreenRow, this);
+        wnd.BuildGameWindow();
         aSetter.setObject();
         aSetter.setNPC();
         aSetter.setMonster();
@@ -89,7 +93,6 @@ public class Game extends JPanel implements Runnable {
     // instructiunile din aceasta pana cand se va inchide
     @Override
     public void run() {
-
         double drawInterval = (double) 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -98,7 +101,6 @@ public class Game extends JPanel implements Runnable {
         int drawCount = 0;
 
         while(gameThread != null) {
-
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             timer += currentTime - lastTime;
@@ -122,7 +124,6 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void update() {
-
         if(gameState == playState) {
             player.update();
             for(int i = 0; i < NPC.length; ++i) {

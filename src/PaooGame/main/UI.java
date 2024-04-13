@@ -154,7 +154,7 @@ public class UI {
     public void drawLife() {
 
         int x = gp.tileSize / 2;
-        int y = gp.screenHeight - gp.tileSize - 10;
+        int y = gp.screenHeight - gp.tileSize * 2;
         int i = 0;
 
         // Black Heart
@@ -166,7 +166,7 @@ public class UI {
 
         // Reset
         x = gp.tileSize / 2;
-        y = gp.screenHeight - gp.tileSize - 10;
+        y = gp.screenHeight - gp.tileSize * 2;
         i = 0;
 
         // Current Life
