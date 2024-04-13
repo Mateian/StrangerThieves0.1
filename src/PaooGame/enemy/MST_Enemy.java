@@ -34,14 +34,14 @@ public class MST_Enemy extends Entity {
     }
 
     public void getImage() {
-        up1 = setup("/enemy/enemy_back_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/enemy/enemy_back_2", gp.tileSize, gp.tileSize);
-        down1 = setup("/enemy/enemy_front_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/enemy/enemy_front_2", gp.tileSize, gp.tileSize);
-        left1 = setup("/enemy/enemy_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/enemy/enemy_left_2", gp.tileSize, gp.tileSize);
-        right1 = setup("/enemy/enemy_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/enemy/enemy_right_2", gp.tileSize, gp.tileSize);
+        up1 = setup(0, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        up2 = setup(1, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        down1 = setup(2, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        down2 = setup(3, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        left1 = setup(4, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        left2 = setup(5, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        right1 = setup(6,0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        right2 = setup(7, 0, "/enemy/enemy_spritesheet", gp.originalTileSize, gp.originalTileSize);
     }
 
     public void setAction() {

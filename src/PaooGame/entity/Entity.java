@@ -16,6 +16,7 @@ public class Entity {
     public int worldX, worldY;
 
     // Entity Images
+    public BufferedImage spriteSheet;
     public BufferedImage up, up1, up2, left, left1, left2, down, down1, down2, right, right1, right2;
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
 
@@ -69,13 +70,13 @@ public class Entity {
         this.gp = gp;
     }
 
-    public BufferedImage setup(String path, int width, int height) {
+    public BufferedImage setup(int indexX, int indexY, String path, int width, int height) {
         UtilityTool tool = new UtilityTool();
         BufferedImage image = null;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(path + ".png"));
-            image = tool.scaleImage(image, width, height);
+            image = ImageIO.read(getClass().getResourceAsStream(path + ".png")).getSubimage(indexX * gp.originalTileSize, indexY * gp.originalTileSize, width, height);
+            image = tool.scaleImage(image, gp.tileSize, gp.tileSize);
         } catch (Exception e) {
             e.printStackTrace();
         }

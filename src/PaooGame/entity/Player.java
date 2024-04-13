@@ -63,28 +63,28 @@ public class Player extends Entity {
 
     public void getImage() {
         // Moving Images
-        up = setup("/player/skar_back", gp.tileSize, gp.tileSize);
-        up1 = setup("/player/skar_back_1", gp.tileSize, gp.tileSize);
-        up2 = setup("/player/skar_back_2", gp.tileSize, gp.tileSize);
-        down = setup("/player/skar_front", gp.tileSize, gp.tileSize);
-        down1 = setup("/player/skar_front_1", gp.tileSize, gp.tileSize);
-        down2 = setup("/player/skar_front_2", gp.tileSize, gp.tileSize);
-        left = setup("/player/skar_left", gp.tileSize, gp.tileSize);
-        left1 = setup("/player/skar_left_1", gp.tileSize, gp.tileSize);
-        left2 = setup("/player/skar_left_2", gp.tileSize, gp.tileSize);
-        right = setup("/player/skar_right", gp.tileSize, gp.tileSize);
-        right1 = setup("/player/skar_right_1", gp.tileSize, gp.tileSize);
-        right2 = setup("/player/skar_right_2", gp.tileSize, gp.tileSize);
+        up = setup(8, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        up1 = setup(9, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        up2 = setup(10, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        down = setup(11, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        down1 = setup(12, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        down2 = setup(13, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        left = setup(14, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        left1 = setup(15, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        left2 = setup(16, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        right = setup(17, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        right1 = setup(18, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        right2 = setup(19, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
 
         // Attack Images
-        attackUp1 = setup("/player/skar_attack_back_1", gp.tileSize, gp.tileSize);
-        attackUp2 = setup("/player/skar_attack_back_2", gp.tileSize, gp.tileSize);
-        attackDown1 = setup("/player/skar_attack_front_1", gp.tileSize, gp.tileSize);
-        attackDown2 = setup("/player/skar_attack_front_2", gp.tileSize, gp.tileSize);
-        attackLeft1 = setup("/player/skar_attack_left_1", gp.tileSize, gp.tileSize);
-        attackLeft2 = setup("/player/skar_attack_left_2", gp.tileSize, gp.tileSize);
-        attackRight1 = setup("/player/skar_attack_right_1", gp.tileSize, gp.tileSize);
-        attackRight2 = setup("/player/skar_attack_right_2", gp.tileSize, gp.tileSize);
+        attackUp1 = setup(0, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackUp2 = setup(1, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackDown1 = setup(2, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackDown2 = setup(3, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackLeft1 = setup(4, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackLeft2 = setup(5, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackRight1 = setup(6, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        attackRight2 = setup(7, 0, "/player/skar_spritesheet", gp.originalTileSize, gp.originalTileSize);
     }
 
     public void update() {

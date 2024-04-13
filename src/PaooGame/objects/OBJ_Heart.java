@@ -7,9 +7,9 @@ public class OBJ_Heart extends Entity {
     public OBJ_Heart(Game gp) {
         super(gp);
         name = "Heart";
-        image = setup("/objects/full_heart", gp.tileSize, gp.tileSize);
-        image2 = setup("/objects/half_heart", gp.tileSize, gp.tileSize);
-        image3 = setup("/objects/black_heart", gp.tileSize, gp.tileSize);
+        image = setup(5, 0, "/objects/object_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        image2 = setup(6, 0, "/objects/object_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        image3 = setup(0, 0, "/objects/object_spritesheet", gp.originalTileSize, gp.originalTileSize);
     }
 }
 

@@ -26,9 +26,9 @@ public class NPC_Fen extends Entity {
     }
 
     public void getImage() {
-        up = left = right = down = setup("/npc/fen_front", gp.tileSize, gp.tileSize);
-        up1 = left1 = right1 = down1 = setup("/npc/fen_scared_1", gp.tileSize, gp.tileSize);
-        up2 = left2 = right2 = down2 = setup("/npc/fen_scared_2", gp.tileSize, gp.tileSize);
+        up = left = right = down = setup(2, 0, "/npc/fen_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        up1 = left1 = right1 = down1 = setup(3, 0, "/npc/fen_spritesheet", gp.originalTileSize, gp.originalTileSize);
+        up2 = left2 = right2 = down2 = setup(2, 0, "/npc/fen_spritesheet", gp.originalTileSize, gp.originalTileSize);
 
 //        Test pentru miscarea NPC-ului
 //        up = setup("/player/skar_back");
