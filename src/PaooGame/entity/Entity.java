@@ -1,14 +1,14 @@
 package PaooGame.entity;
 
 import PaooGame.main.UtilityTool;
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entity {
-    GamePanel gp;
+    Game gp;
     public int worldx, worldy;
     public BufferedImage up, up1, up2, left, left1, left2, down, down1, down2, right, right1, right2;
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
@@ -51,7 +51,7 @@ public class Entity {
     public int useCost;
 
 
-    public Entity(GamePanel gp) {
+    public Entity(Game gp) {
         this.gp = gp;
     }
 

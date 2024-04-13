@@ -1,13 +1,14 @@
 package PaooGame.main;
 
+import PaooGame.Game;
 import PaooGame.enemy.MST_Enemy;
 import PaooGame.entity.NPC_Fen;
 import PaooGame.objects.*;
 
 public class AssetSetter {
-    GamePanel gp;
+    Game gp;
 
-    public AssetSetter(GamePanel gp) {
+    public AssetSetter(Game gp) {
         this.gp = gp;
     }
 

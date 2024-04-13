@@ -1,10 +1,10 @@
 package PaooGame.objects;
 
 import PaooGame.entity.Entity;
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 public class OBJ_Door extends Entity {
-    public OBJ_Door(GamePanel gp) {
+    public OBJ_Door(Game gp) {
         super(gp);
         name = "Door";
         down = setup("/objects/door", gp.tileSize, gp.tileSize);

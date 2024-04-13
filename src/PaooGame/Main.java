@@ -1,4 +1,4 @@
-package PaooGame.main;
+package PaooGame;
 
 import javax.swing.*;
 
@@ -13,7 +13,7 @@ public class Main {
         window.setResizable(false);
         window.setTitle("Stranger Thieves");
 
-        GamePanel gamePanel = new GamePanel();
+        Game gamePanel = new Game();
         window.add(gamePanel);
 
         window.pack();

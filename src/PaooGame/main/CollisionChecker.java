@@ -1,10 +1,11 @@
 package PaooGame.main;
 
+import PaooGame.Game;
 import PaooGame.entity.Entity;
 
 public class CollisionChecker {
-    GamePanel gp;
-    public CollisionChecker(GamePanel gp) {
+    Game gp;
+    public CollisionChecker(Game gp) {
         this.gp = gp;
     }
 

@@ -1,7 +1,8 @@
-package PaooGame.main;
+package PaooGame;
 
 import PaooGame.entity.Entity;
 import PaooGame.entity.Player;
+import PaooGame.main.*;
 import PaooGame.tiles.TileManager;
 
 import javax.swing.*;
@@ -10,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class GamePanel extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable {
     // Screen Settings - standard
-    final int originalTileSize = 16;
+    public final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
     public final int maxScreenColumn = 16;
@@ -35,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable {
     Sound se = new Sound();
     public UI ui = new UI(this);
     public EventHandler eHandler = new EventHandler(this);
-    Thread gameThread;
+    public Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
 
@@ -60,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int lvl1ObjectiveCounter = 0;
     public int lvl1Objective = 25;
 
-    public GamePanel() {
+    public Game() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);

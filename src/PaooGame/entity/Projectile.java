@@ -1,10 +1,10 @@
 package PaooGame.entity;
 
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 public class Projectile extends Entity {
     Entity ent;
-    public Projectile(GamePanel gp) {
+    public Projectile(Game gp) {
         super(gp);
     }
     public void set(int worldX, int worldY, String dir, boolean alive, Entity ent) {

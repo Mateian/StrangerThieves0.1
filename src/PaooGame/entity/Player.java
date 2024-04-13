@@ -1,7 +1,7 @@
 package PaooGame.entity;
 
 import PaooGame.objects.OBJ_Bullet;
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 import PaooGame.main.KeyHandler;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ public class Player extends Entity {
     public static boolean hasWeapon = false;
     int counterGun = 0;
 
-    public Player(GamePanel gp, KeyHandler keyH) {
+    public Player(Game gp, KeyHandler keyH) {
         super(gp);
 
         this.keyH = keyH;

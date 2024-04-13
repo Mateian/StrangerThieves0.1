@@ -1,13 +1,15 @@
 package PaooGame.main;
 
+import PaooGame.Game;
+
 public class EventHandler {
-    GamePanel gp;
+    Game gp;
     EventRect[][] eventRect;
 
     int previousEventX, previousEventY;
     boolean canTouchEvent = true;
 
-    public EventHandler(GamePanel gp) {
+    public EventHandler(Game gp) {
         this.gp = gp;
 
         eventRect = new EventRect[gp.maxWorldColumn][gp.maxWorldRow];

@@ -1,6 +1,6 @@
 package PaooGame.tiles;
 
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 import PaooGame.main.UtilityTool;
 
 import javax.imageio.ImageIO;
@@ -10,11 +10,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class TileManager {
-    GamePanel gp;
+    Game gp;
     public Tile[] tile;
     public int[][] mapTile;
 
-    public TileManager(GamePanel gp) {
+    public TileManager(Game gp) {
         this.gp = gp;
         tile = new Tile[20];
         mapTile = new int[gp.maxWorldColumn][gp.maxWorldRow];

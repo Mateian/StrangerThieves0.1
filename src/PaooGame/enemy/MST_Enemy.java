@@ -2,13 +2,13 @@ package PaooGame.enemy;
 
 import PaooGame.objects.OBJ_Bullet;
 import PaooGame.entity.Entity;
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 import java.util.Random;
 
 public class MST_Enemy extends Entity {
-    GamePanel gp;
-    public MST_Enemy(GamePanel gp) {
+    Game gp;
+    public MST_Enemy(Game gp) {
         super(gp);
 
         this.gp = gp;

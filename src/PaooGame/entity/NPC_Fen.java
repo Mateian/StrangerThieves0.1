@@ -1,6 +1,6 @@
 package PaooGame.entity;
 
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,7 +10,7 @@ public class NPC_Fen extends Entity {
 
 
 
-    public NPC_Fen(GamePanel gp) {
+    public NPC_Fen(Game gp) {
         super(gp);
 
         direction = "down";

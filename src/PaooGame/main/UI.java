@@ -1,5 +1,6 @@
 package PaooGame.main;
 
+import PaooGame.Game;
 import PaooGame.enemy.MST_Enemy;
 import PaooGame.entity.Entity;
 import PaooGame.objects.OBJ_Heart;
@@ -12,7 +13,7 @@ import java.text.DecimalFormat;
 
 public class UI {
     Graphics2D graph2;
-    GamePanel gp;
+    Game gp;
     Font arial_40, arial_80B, console_40B;
     BufferedImage full_heart, half_heart, black_heart;
     BufferedImage enemyImage;
@@ -27,7 +28,7 @@ public class UI {
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     UtilityTool tool = new UtilityTool();
 
-    public UI(GamePanel gp) {
+    public UI(Game gp) {
         this.gp = gp;
         arial_40 = new Font("Comic Sans MS", Font.PLAIN, 40);
         console_40B = new Font("Console", Font.BOLD, 40);

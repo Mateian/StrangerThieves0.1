@@ -1,12 +1,13 @@
 package PaooGame.main;
 
+import PaooGame.Game;
 import PaooGame.entity.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-    GamePanel gp;
+    Game gp;
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     public boolean ePressed;
     public boolean shotPressed;
@@ -14,7 +15,7 @@ public class KeyHandler implements KeyListener {
     // Debug
     public boolean toggleDebugInfo = false;
 
-    public KeyHandler(GamePanel gp) {
+    public KeyHandler(Game gp) {
         this.gp = gp;
     }
 

@@ -1,10 +1,10 @@
 package PaooGame.objects;
 
 import PaooGame.entity.Entity;
-import PaooGame.main.GamePanel;
+import PaooGame.Game;
 
 public class OBJ_Skargun extends Entity {
-    public OBJ_Skargun(GamePanel gp) {
+    public OBJ_Skargun(Game gp) {
         super(gp);
         name = "Skargun";
         down = setup("/objects/hidden_chest", gp.tileSize, gp.tileSize);
