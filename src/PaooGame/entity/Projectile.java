@@ -3,13 +3,15 @@ package PaooGame.entity;
 import PaooGame.Game;
 
 public class Projectile extends Entity {
+    // Entity Owner
     Entity ent;
+
     public Projectile(Game gp) {
         super(gp);
     }
     public void set(int worldX, int worldY, String dir, boolean alive, Entity ent) {
-        this.worldx = worldX;
-        this.worldy = worldY;
+        this.worldX = worldX;
+        this.worldY = worldY;
         this.direction = dir;
         this.alive = alive;
         this.ent = ent;
@@ -32,16 +34,16 @@ public class Projectile extends Entity {
 
         switch(direction) {
             case "up":
-                worldy -= speed;
+                worldY -= speed;
                 break;
             case "down":
-                worldy += speed;
+                worldY += speed;
                 break;
             case "left":
-                worldx -= speed;
+                worldX -= speed;
                 break;
             case "right":
-                worldx += speed;
+                worldX += speed;
                 break;
         }
 

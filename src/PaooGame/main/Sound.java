@@ -6,7 +6,11 @@ import javax.sound.sampled.Clip;
 import java.net.URL;
 
 public class Sound {
+
+    // The file that's going to be streamed
     Clip clip;
+
+    // Array of all sounds used in the game
     URL[] soundURL = new URL[30];
 
     public Sound() {

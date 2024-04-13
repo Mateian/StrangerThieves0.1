@@ -7,7 +7,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
+
+    // Base Settings
     Game gp;
+
+    // keyPressed - is the key pressed?
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     public boolean ePressed;
     public boolean shotPressed;

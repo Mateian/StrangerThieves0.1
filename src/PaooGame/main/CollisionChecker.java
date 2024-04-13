@@ -4,16 +4,19 @@ import PaooGame.Game;
 import PaooGame.entity.Entity;
 
 public class CollisionChecker {
+
+    // Base Settings
     Game gp;
     public CollisionChecker(Game gp) {
         this.gp = gp;
     }
 
+    // Check Collision with a Tile
     public void checkTile(Entity entity) {
-        int entityLeftWorldX = entity.worldx + entity.solidArea.x;
-        int entityRightWorldX = entity.worldx + entity.solidArea.x + entity.solidArea.width;
-        int entityTopWorldY = entity.worldy + entity.solidArea.y;
-        int entityBottomWorldY = entity.worldy + entity.solidArea.y + entity.solidArea.height;
+        int entityLeftWorldX = entity.worldX + entity.solidArea.x;
+        int entityRightWorldX = entity.worldX + entity.solidArea.x + entity.solidArea.width;
+        int entityTopWorldY = entity.worldY + entity.solidArea.y;
+        int entityBottomWorldY = entity.worldY + entity.solidArea.y + entity.solidArea.height;
 
         int entityLeftCol = entityLeftWorldX / gp.tileSize;
         int entityRightCol = entityRightWorldX / gp.tileSize;
@@ -57,18 +60,20 @@ public class CollisionChecker {
                 break;
         }
     }
+
+    // Check Collision with an Object
     public int checkObject(Entity entity, boolean player) {
         int index = 999;
 
         for(int i = 0; i < gp.obj.length; ++i) {
             if(gp.obj[i] != null) {
                 // Pozitia solida a entitatilor
-                entity.solidArea.x = entity.worldx + entity.solidArea.x;
-                entity.solidArea.y = entity.worldy + entity.solidArea.y;
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
                 // Pozitia solida a obiectelor
-                gp.obj[i].solidArea.x = gp.obj[i].worldx + gp.obj[i].solidArea.x;
-                gp.obj[i].solidArea.y = gp.obj[i].worldy + gp.obj[i].solidArea.y;
+                gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
+                gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
 
                 switch(entity.direction) {
                     case "up":
@@ -102,18 +107,19 @@ public class CollisionChecker {
         return index;
     }
 
+    // Check collision with an Entity
     public int checkEntity(Entity entity, Entity[] tg) {
         int index = 999;
 
         for(int i = 0; i < tg.length; ++i) {
             if(tg[i] != null) {
                 // Pozitia solida a entitatilor
-                entity.solidArea.x = entity.worldx + entity.solidArea.x;
-                entity.solidArea.y = entity.worldy + entity.solidArea.y;
+                entity.solidArea.x = entity.worldX + entity.solidArea.x;
+                entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
                 // Pozitia solida a obiectelor
-                tg[i].solidArea.x = tg[i].worldx + tg[i].solidArea.x;
-                tg[i].solidArea.y = tg[i].worldy + tg[i].solidArea.y;
+                tg[i].solidArea.x = tg[i].worldX + tg[i].solidArea.x;
+                tg[i].solidArea.y = tg[i].worldY + tg[i].solidArea.y;
 
                 switch(entity.direction) {
                     case "up":
@@ -148,12 +154,12 @@ public class CollisionChecker {
         boolean contactPlayer = false;
 
         // Pozitia solida a entitatilor
-        entity.solidArea.x = entity.worldx + entity.solidArea.x;
-        entity.solidArea.y = entity.worldy + entity.solidArea.y;
+        entity.solidArea.x = entity.worldX + entity.solidArea.x;
+        entity.solidArea.y = entity.worldY + entity.solidArea.y;
 
         // Pozitia solida a obiectelor
-        gp.player.solidArea.x = gp.player.worldx + gp.player.solidArea.x;
-        gp.player.solidArea.y = gp.player.worldy + gp.player.solidArea.y;
+        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
 
         switch(entity.direction) {
             case "up":

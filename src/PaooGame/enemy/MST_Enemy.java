@@ -7,6 +7,8 @@ import PaooGame.Game;
 import java.util.Random;
 
 public class MST_Enemy extends Entity {
+
+    // Base Settings
     Game gp;
     public MST_Enemy(Game gp) {
         super(gp);
@@ -61,7 +63,7 @@ public class MST_Enemy extends Entity {
         }
         int i = new Random().nextInt(100) + 1;
         if(i > 99 && !projectile.alive && shotCounter == 30) {
-            projectile.set(worldx, worldy, direction, true, this);
+            projectile.set(worldX, worldY, direction, true, this);
             gp.projectileList.add(projectile);
             shotCounter = 0;
         }

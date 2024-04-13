@@ -12,21 +12,38 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class UI {
+
+    // Base Settings
     Graphics2D graph2;
     Game gp;
+
+    // Fonts
     Font arial_40, arial_80B, console_40B;
+
+    // Images
     BufferedImage full_heart, half_heart, black_heart;
     BufferedImage enemyImage;
+
+    // Booleans
     public boolean messageOn = false;
-    public String message = "";
-    int messageCounter = 0;
     public boolean gameFinished = false;
+
+    // String - Messages
+    public String message = "";
     public String dialogText = "";
+
+    // Counters
+    int messageCounter = 0;
+
+    // Index
     public int commandNumber = 0;
 
+    // Play time
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
-    UtilityTool tool = new UtilityTool();
+
+    // Utility Tool - other functions
+//    UtilityTool tool = new UtilityTool();
 
     public UI(Game gp) {
         this.gp = gp;

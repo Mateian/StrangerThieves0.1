@@ -12,22 +12,25 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Game extends JPanel implements Runnable {
-    // Screen Settings - standard
+
+    // Graphic size
     public final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale;
+
+    // Screen Settings - standard
     public final int maxScreenColumn = 16;
     public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenColumn;
     public final int screenHeight = tileSize * maxScreenRow;
-    public double forShowFPS = 0;
 
-    // Setari ale Lumii
+    // World Settings
     public final int maxWorldColumn = 50;
     public final int maxWorldRow = 50;
 
     // FPS
     int FPS = 60;
+    public double forShowFPS = 0;
 
     // System
     public TileManager tileMng = new TileManager(this);
@@ -50,8 +53,8 @@ public class Game extends JPanel implements Runnable {
 
     // Game State
     public int gameState;
-    public final int playState = 1;
     public final int pauseState = 0;
+    public final int playState = 1;
     public final int dialogState = 2;
     public final int menuState = 3;
     public final int lvl1CompleteState = 4;
@@ -204,7 +207,7 @@ public class Game extends JPanel implements Runnable {
             Collections.sort(entityList, new Comparator<Entity>() {
                 @Override
                 public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldy, e2.worldy);
+                    int result = Integer.compare(e1.worldY, e2.worldY);
                     return result;
                 }
             });
@@ -234,13 +237,13 @@ public class Game extends JPanel implements Runnable {
             int x = 10;
             int y = 400;
             int height = 20;
-            graph2.drawString("X: " + player.worldx, x, y);
+            graph2.drawString("X: " + player.worldX, x, y);
             y += height;
-            graph2.drawString("Y: " + player.worldy, x, y);
+            graph2.drawString("Y: " + player.worldY, x, y);
             y += height;
-            graph2.drawString("Row: " + (player.worldy + player.solidArea.y) / tileSize, x, y);
+            graph2.drawString("Row: " + (player.worldY + player.solidArea.y) / tileSize, x, y);
             y += height;
-            graph2.drawString("Column: " + (player.worldx + player.solidArea.x) / tileSize, x, y);
+            graph2.drawString("Column: " + (player.worldX + player.solidArea.x) / tileSize, x, y);
             y += height;
             graph2.drawString("Draw Time: " + passed, x, y);
         }

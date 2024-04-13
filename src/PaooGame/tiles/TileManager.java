@@ -10,8 +10,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class TileManager {
+    // Base Settings
     Game gp;
+
+    // Tile Array - all tiles in one array
     public Tile[] tile;
+
+    // Map - a matrix with all tiles ID placed all over the width X height map
     public int[][] mapTile;
 
     public TileManager(Game gp) {
@@ -86,10 +91,10 @@ public class TileManager {
 
             int worldX = worldColumn * gp.tileSize;
             int worldY = worldRow * gp.tileSize;
-            int screenX = worldX - gp.player.worldx + gp.player.screenX;
-            int screenY = worldY - gp.player.worldy + gp.player.screenY;
+            int screenX = worldX - gp.player.worldX + gp.player.screenX;
+            int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if(worldX + gp.tileSize > gp.player.worldx - gp.player.screenX && worldX -gp.tileSize < gp.player.worldx + gp.player.screenX && worldY + gp.tileSize > gp.player.worldy - gp.player.screenY && worldY - gp.tileSize < gp.player.worldy + gp.player.screenY) {
+            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && worldX -gp.tileSize < gp.player.worldX + gp.player.screenX && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
                 graph2.drawImage(tile[tileNumber].image, screenX, screenY, null);
             }
             worldColumn += 1;

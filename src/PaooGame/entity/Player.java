@@ -8,17 +8,24 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
+
+    // Key Handler
     KeyHandler keyH;
 
+    // Images
     public BufferedImage up, down, left, right;
 
+    // Position
     public final int screenX;
     public final int screenY;
 
+    // Boolean
     public boolean moving = false;
-    public int hasKey = 0;
     public static boolean hasWeapon = false;
+
+    // Counters
     int counterGun = 0;
+    public int hasKey = 0;
 
     public Player(Game gp, KeyHandler keyH) {
         super(gp);
@@ -45,8 +52,8 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        worldx = gp.tileSize * 24;
-        worldy = gp.tileSize * 30 - 1;
+        worldX = gp.tileSize * 24;
+        worldY = gp.tileSize * 30 - 1;
         speed = 4;
         direction = "up";
         maxLife = 6;
@@ -126,16 +133,16 @@ public class Player extends Entity {
             if(!collisionOn && !keyH.ePressed) {
                 switch(direction) {
                     case "up":
-                        worldy -= speed;
+                        worldY -= speed;
                         break;
                     case "down":
-                        worldy += speed;
+                        worldY += speed;
                         break;
                     case "left":
-                        worldx -= speed;
+                        worldX -= speed;
                         break;
                     case "right":
-                        worldx += speed;
+                        worldX += speed;
                         break;
                 }
             }
@@ -160,7 +167,7 @@ public class Player extends Entity {
         }
 
         if(gp.keyH.shotPressed && !projectile.alive && shotCounter == 30) {
-            projectile.set(worldx, worldy, direction, true, this);
+            projectile.set(worldX, worldY, direction, true, this);
 
             gp.projectileList.add(projectile);
 
@@ -190,24 +197,24 @@ public class Player extends Entity {
             spriteNumber = 2;
 
             // Salveaza valoarea curenta
-            int currentWorldX = worldx;
-            int currentWorldY = worldy;
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
             int solidAreaWidth = solidArea.width;
             int solidAreaHeight = solidArea.height;
 
             // update
             switch(direction) {
                 case "up":
-                    worldy -= attackArea.height;
+                    worldY -= attackArea.height;
                     break;
                 case "down":
-                    worldy += attackArea.height;
+                    worldY += attackArea.height;
                     break;
                 case "left":
-                    worldx -= attackArea.width;
+                    worldX -= attackArea.width;
                     break;
                 case "right":
-                    worldx += attackArea.width;
+                    worldX += attackArea.width;
             }
             // Area solida devine area de atac
             solidArea.width = attackArea.width;
@@ -217,8 +224,8 @@ public class Player extends Entity {
             int mstIndex = gp.cChecker.checkEntity(this, gp.mst);
             damageEnemy(mstIndex, attack);
 
-            worldx = currentWorldX;
-            worldy = currentWorldY;
+            worldX = currentWorldX;
+            worldY = currentWorldY;
             solidArea.width = solidAreaWidth;
             solidArea.height = solidAreaHeight;
         }

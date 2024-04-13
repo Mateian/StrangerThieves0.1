@@ -6,9 +6,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class NPC_Fen extends Entity {
+
     public int spriteNumber = 1;
-
-
 
     public NPC_Fen(Game gp) {
         super(gp);
@@ -110,10 +109,10 @@ public class NPC_Fen extends Entity {
 
     public void draw(Graphics2D graph2) {
         BufferedImage image = null;
-        int screenX = worldx - gp.player.worldx + gp.player.screenX;
-        int screenY = worldy - gp.player.worldy + gp.player.screenY;
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if(worldx + gp.tileSize > gp.player.worldx - gp.player.screenX && worldx -gp.tileSize < gp.player.worldx + gp.player.screenX && worldy + gp.tileSize > gp.player.worldy - gp.player.screenY && worldy - gp.tileSize < gp.player.worldy + gp.player.screenY) {
+        if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && worldX -gp.tileSize < gp.player.worldX + gp.player.screenX && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
             switch(direction) {
                 case "up":
                     if(spriteNumber == 0) {

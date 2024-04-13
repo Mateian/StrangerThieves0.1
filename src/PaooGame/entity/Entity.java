@@ -8,35 +8,50 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entity {
+
+    // Base Settings
     Game gp;
-    public int worldx, worldy;
+
+    // Entity Position
+    public int worldX, worldY;
+
+    // Entity Images
     public BufferedImage up, up1, up2, left, left1, left2, down, down1, down2, right, right1, right2;
     public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
+
+    // Entity Current State as Booleans
     public String direction = "down";
-    public int actionCounter = 0;
-    public int spriteCounter = 0;
-    public int spriteNumber = 0;
     public boolean invincible = false;
-    boolean shooting = false;
     boolean attacking = false;
     public boolean alive = true;
     public boolean dead = false;
     boolean toggleHpBar = false;
-    public int invincibleCounter = 0;
-    int deadCounter = 0;
-    int barCounter = 0;
-    public int shotCounter = 0;
+//    boolean shooting = false;
 
+    // Index
+    public int spriteNumber = 0;
+
+    // Counters
+    public int spriteCounter = 0;
+    public int actionCounter = 0;
+    public int invincibleCounter = 0;
+    public int shotCounter = 0;
+    int barCounter = 0;
+    int deadCounter = 0;
+
+    // Solid Areas and Collisions
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public Rectangle attackArea = new Rectangle(0, 0, 0, 0);
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
-    String dialogs[] = new String[25];
+
+    // Dialogs
+    String[] dialogs = new String[25];
     int dialogIndex = 0;
     public BufferedImage image, image2, image3;
     public boolean collision = false;
     public int type; // 0 - player, 1 - npc, 2 - monster
-    public boolean onPath = false;
+//    public boolean onPath = false;
 
     // Character Status
     public String name;
@@ -45,11 +60,10 @@ public class Entity {
     public int speed;
     public int attack = 0;
     public int defense = 0;
-    public int maxMana;
-    public int mana;
     public Projectile projectile;
     public int useCost;
-
+//    public int maxMana;
+//    public int mana;
 
     public Entity(Game gp) {
         this.gp = gp;
@@ -96,10 +110,10 @@ public class Entity {
 
     public void draw(Graphics2D graph2) {
         BufferedImage image = null;
-        int screenX = worldx - gp.player.worldx + gp.player.screenX;
-        int screenY = worldy - gp.player.worldy + gp.player.screenY;
+        int screenX = worldX - gp.player.worldX + gp.player.screenX;
+        int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-        if (worldx + gp.tileSize > gp.player.worldx - gp.player.screenX && worldx - gp.tileSize < gp.player.worldx + gp.player.screenX && worldy + gp.tileSize > gp.player.worldy - gp.player.screenY && worldy - gp.tileSize < gp.player.worldy + gp.player.screenY) {
+        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && worldX - gp.tileSize < gp.player.worldX + gp.player.screenX && worldY + gp.tileSize > gp.player.worldY - gp.player.screenY && worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
             switch (direction) {
                 case "up":
                     if (spriteNumber == 0) {
@@ -260,16 +274,16 @@ public class Entity {
         if (!collisionOn) {
             switch (direction) {
                 case "up":
-                    worldy -= speed;
+                    worldY -= speed;
                     break;
                 case "down":
-                    worldy += speed;
+                    worldY += speed;
                     break;
                 case "left":
-                    worldx -= speed;
+                    worldX -= speed;
                     break;
                 case "right":
-                    worldx += speed;
+                    worldX += speed;
                     break;
             }
         }

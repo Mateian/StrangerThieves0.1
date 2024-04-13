@@ -35,8 +35,8 @@ public class EventHandler {
 
     public void checkEvent() {
 
-        int xDistance = Math.abs(gp.player.worldx - previousEventX);
-        int yDistance = Math.abs(gp.player.worldy - previousEventY);
+        int xDistance = Math.abs(gp.player.worldX - previousEventX);
+        int yDistance = Math.abs(gp.player.worldY - previousEventY);
         int distance = Math.max(xDistance, yDistance);
         if(distance > gp.tileSize) {
             canTouchEvent = true;
@@ -69,8 +69,8 @@ public class EventHandler {
     public boolean hit(int column, int row, String direction) {
         boolean hit = false;
 
-        gp.player.solidArea.x = gp.player.worldx + gp.player.solidArea.x;
-        gp.player.solidArea.y = gp.player.worldy + gp.player.solidArea.y;
+        gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+        gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
         eventRect[column][row].x = column * gp.tileSize + eventRect[column][row].x;
         eventRect[column][row].y = row * gp.tileSize + eventRect[column][row].y;
 
@@ -78,8 +78,8 @@ public class EventHandler {
             if(gp.player.direction.contentEquals(direction) || direction.contentEquals("any")) {
                 hit = true;
 
-                previousEventX = gp.player.worldx;
-                previousEventY = gp.player.worldy;
+                previousEventX = gp.player.worldX;
+                previousEventY = gp.player.worldY;
             }
         }
 
