@@ -6,7 +6,6 @@ import PaooGame.main.KeyHandler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Player extends Entity {
@@ -17,7 +16,7 @@ public class Player extends Entity {
     // Images
     public BufferedImage up, down, left, right;
     public BufferedImage weapUp, weapUp1, weapDown, weapDown1, weapLeft, weapLeft1, weapRight, weapRight1;
-    ArrayList<BufferedImage> defArray = new ArrayList<>();
+//    ArrayList<BufferedImage> defArray = new ArrayList<>();
 
     // Position
     public final int screenX;
@@ -125,22 +124,22 @@ public class Player extends Entity {
             }
             // Check tile collision
             collisionOn = false;
-            gp.cChecker.checkTile(this);
+            gp.colChecker.checkTile(this);
 
             // Check object collision
-            int objectIndex = gp.cChecker.checkObject(this, true);
+            int objectIndex = gp.colChecker.checkObject(this, true);
             pickUpObject(objectIndex);
 
             // Check NPC collision
-            int NPCIdx = gp.cChecker.checkEntity(this, gp.NPC);
+            int NPCIdx = gp.colChecker.checkEntity(this, gp.NPC);
             intersectNPC(NPCIdx);
 
             // Check Monster collision
-            int monsterIndex = gp.cChecker.checkEntity(this, gp.mst);
+            int monsterIndex = gp.colChecker.checkEntity(this, gp.mst);
             damageFromMonster(monsterIndex);
 
             // Check Event
-            gp.eHandler.checkEvent();
+            gp.eventH.checkEvent();
 
             // Jucatorul nu poate "inainta" daca interactioneaza cu un obiect/tile
             // cu coliziune
@@ -235,7 +234,7 @@ public class Player extends Entity {
             solidArea.height = attackArea.height;
 
             // Verifica daca exista un inamic in zona
-            int mstIndex = gp.cChecker.checkEntity(this, gp.mst);
+            int mstIndex = gp.colChecker.checkEntity(this, gp.mst);
             damageEnemy(mstIndex, attack);
 
             worldX = currentWorldX;
@@ -252,7 +251,7 @@ public class Player extends Entity {
     public void damageEnemy(int i, int attack) {
         if(i != 999) {
             if(!gp.mst[i].invincible && !gp.mst[i].dead) {
-                gp.playSE(5);
+                gp.playFX(5);
 
                 int damage = attack - gp.mst[i].defense;
                 if(damage < 0) {
@@ -266,7 +265,7 @@ public class Player extends Entity {
 
                 if(gp.mst[i].life <= 0) {
                     gp.mst[i].dead = true;
-                    gp.playSE(6);
+                    gp.playFX(6);
                     gp.lvl1ObjectiveCounter++;
                     if(gp.lvl1ObjectiveCounter == gp.lvl1Objective) {
                         gp.lvl1Completion = true;
@@ -292,14 +291,14 @@ public class Player extends Entity {
 
             switch(objectName) {
                 case "Key":
-                    gp.playSE(1);
+                    gp.playFX(1);
                     hasKey++;
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got a key!");
                     break;
                 case "Door":
                     if(hasKey > 0) {
-                        gp.playSE(3);
+                        gp.playFX(3);
                         gp.obj[i] = null;
                         hasKey--;
                         gp.ui.showMessage("You opened the door!");
@@ -308,7 +307,7 @@ public class Player extends Entity {
                     }
                     break;
                 case "Boots":
-                    gp.playSE(2);
+                    gp.playFX(2);
                     speed += 2;
                     gp.obj[i] = null;
                     gp.ui.showMessage("Speed up!");
@@ -316,7 +315,7 @@ public class Player extends Entity {
                 case "Chest":
                     gp.ui.gameFinished = true;
                     gp.stopMusic();
-                    gp.playSE(4);
+                    gp.playFX(4);
                     break;
                 case "Skargun":
                     counterGun++;

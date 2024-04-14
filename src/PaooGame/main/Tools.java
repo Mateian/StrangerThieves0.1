@@ -1,13 +1,9 @@
 package PaooGame.main;
 
-import PaooGame.Game;
-import PaooGame.tiles.Tile;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
-public class UtilityTool {
+public class Tools {
 
     // Scale "original" in "width" x "height"
     public BufferedImage scaleImage(BufferedImage original, int width, int height) {

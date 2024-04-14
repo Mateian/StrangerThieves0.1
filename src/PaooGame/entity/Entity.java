@@ -1,6 +1,6 @@
 package PaooGame.entity;
 
-import PaooGame.main.UtilityTool;
+import PaooGame.main.Tools;
 import PaooGame.Game;
 
 import javax.imageio.ImageIO;
@@ -71,7 +71,7 @@ public class Entity {
     }
 
     public BufferedImage setup(int indexX, int indexY, String path, int width, int height) {
-        UtilityTool tool = new UtilityTool();
+        Tools tool = new Tools();
         BufferedImage image = null;
 
         try {
@@ -262,11 +262,11 @@ public class Entity {
 
         // Collision
         collisionOn = false;
-        gp.cChecker.checkTile(this);
-        gp.cChecker.checkObject(this, false);
-        gp.cChecker.checkEntity(this, gp.NPC);
-        gp.cChecker.checkEntity(this, gp.mst);
-        boolean contactPlayer = gp.cChecker.checkPlayer(this);
+        gp.colChecker.checkTile(this);
+        gp.colChecker.checkObject(this, false);
+        gp.colChecker.checkEntity(this, gp.NPC);
+        gp.colChecker.checkEntity(this, gp.mst);
+        boolean contactPlayer = gp.colChecker.checkPlayer(this);
 
         if (this.type == 2 && contactPlayer) {
             dmgPlayer(attack);

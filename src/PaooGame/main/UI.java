@@ -42,8 +42,7 @@ public class UI {
     double playTime;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
-    // Utility Tool - other functions
-//    UtilityTool tool = new UtilityTool();
+    // Tools tool = new Tools()
 
     public UI(Game gp) {
         this.gp = gp;

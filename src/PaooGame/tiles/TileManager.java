@@ -1,7 +1,7 @@
 package PaooGame.tiles;
 
 import PaooGame.Game;
-import PaooGame.main.UtilityTool;
+import PaooGame.main.Tools;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -33,11 +33,11 @@ public class TileManager {
 
         mapTile = new int[gp.maxWorldColumn][gp.maxWorldRow];
 
-        getTileImage();
+        getImage();
         loadMap("/maps/level01.txt");
     }
 
-    public void getTileImage() {
+    public void getImage() {
         setup(13, 0, 0, "flower_bush", false);
         setup(0, 1, 0, "grass", false);
         setup(11, 2, 0, "grass_fence", true);
@@ -54,8 +54,8 @@ public class TileManager {
         setup(2, 13, 0, "tree", true);
     }
 
-    public void setup(int index, int indexX, int indexY, String imageName, boolean collision) {
-        UtilityTool tool = new UtilityTool();
+    public void setup(int index, int indexX, int indexY, String imagePath, boolean collision) {
+        Tools tool = new Tools();
         try {
             tile[index] = new Tile();
             tile[index].image = tool.cropImage(spriteSheet, gp.originalTileSize * indexX, gp.originalTileSize * indexY, gp.originalTileSize, gp.originalTileSize);

@@ -19,13 +19,13 @@ public class Projectile extends Entity {
     }
     public void update() {
         if(ent == gp.player) {
-            int mstIndex = gp.cChecker.checkEntity(this, gp.mst);
+            int mstIndex = gp.colChecker.checkEntity(this, gp.mst);
             if(mstIndex != 999) {
                 gp.player.damageEnemy(mstIndex, attack);
                 alive = false;
             }
         } else {
-            boolean contactPlayer = gp.cChecker.checkPlayer(this);
+            boolean contactPlayer = gp.colChecker.checkPlayer(this);
             if(!gp.player.invincible && contactPlayer) {
                 dmgPlayer(attack);
                 alive = false;
