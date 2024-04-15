@@ -113,7 +113,8 @@ public class UI {
                 if(gp.gameState == gp.playState) {
                     playTime +=(double)1/60;
                 }
-                graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*11, 65);
+                graph2.setFont(new Font("Consolas", Font.PLAIN, 20));
+                graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*13 + gp.tileSize / 2, 65);
 
                 // Message
                 if(messageOn) {
@@ -157,11 +158,14 @@ public class UI {
         int i = 0;
 
         // Black Heart
-        while(i < gp.player.maxLife / 2) {
-            graph2.drawImage(black_heart, x, y, null);
-            ++i;
-            x += gp.tileSize + 10;
-        }
+        graph2.setColor(Color.black);
+        graph2.fillRect(x, y, gp.tileSize * gp.player.maxLife + 10, gp.tileSize);
+//
+//        while(i < gp.player.maxLife / 2) {
+//              graph2.drawImage(black_heart, x, y, null);
+//            ++i;
+//            x += gp.tileSize + 10;
+//        }
 
         // Reset
         x = gp.tileSize / 2;
@@ -169,16 +173,32 @@ public class UI {
         i = 0;
 
         // Current Life
-        while(i < gp.player.life) {
-            graph2.drawImage(half_heart, x, y, null);
-            ++i;
-            if(i < gp.player.life) {
-                graph2.drawImage(full_heart, x, y, null);
-            }
-            ++i;
-            x += gp.tileSize + 10;
-        }
+        graph2.setColor(Color.red);
+        graph2.fillRect(x + 5, y + 5, gp.player.life * gp.tileSize, gp.tileSize - 10);
 
+//        while(i < gp.player.life) {
+////            graph2.drawImage(half_heart, x, y, null);
+////            ++i;
+////            if(i < gp.player.life) {
+////                graph2.drawImage(full_heart, x, y, null);
+////            }
+//            ++i;
+//            x += gp.tileSize + 10;
+//        }
+
+        // Reset
+        x = gp.tileSize / 2  + gp.tileSize * gp.player.maxLife / 2;
+        y = gp.screenHeight - gp.tileSize - 16;
+        i = 0;
+
+        if(gp.player.life < 0) {
+            gp.player.life = 0;
+        }
+        String hp = "" + gp.player.life;
+        // HP Text
+        graph2.setColor(Color.white);
+        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 24));
+        graph2.drawString(hp, x, y);
     }
 
     public void drawMenu() {
@@ -239,7 +259,7 @@ public class UI {
     public void drawDialogScreen() {
         // Window - fereastra dialogului
         int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
+        int y = gp.screenHeight / 2 + gp.tileSize;
         int width = gp.screenWidth - 4 * gp.tileSize;
         int height = gp.tileSize * 4;
         drawSubWindow(x, y, width, height);
@@ -247,12 +267,20 @@ public class UI {
         x += gp.tileSize;
         y += gp.tileSize;
         graph2.setFont(arial_40);
-        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 28));
+        graph2.setFont(new Font("Consolas", Font.PLAIN, 28));
 
         for(String line : dialogText.split("\n")) {
             graph2.drawString(line, x, y);
             y += 40;
         }
+        x = gp.tileSize * 2 - gp.tileSize / 2 + 10;
+        y = gp.screenHeight / 2 + gp.tileSize - gp.tileSize / 2 + 10;
+        int NPCIndex = gp.colChecker.checkEntity(gp.player, gp.NPC);
+        if(NPCIndex != 999) {
+            graph2.drawImage(gp.NPC[NPCIndex].down, x, y, null);
+        }
+
+
     }
 
     public void drawSubWindow(int x, int y, int width, int height) {
@@ -260,11 +288,11 @@ public class UI {
         graph2.setColor(clr);
         graph2.fillRoundRect(x, y, width, height, 35, 35);
 
-        clr = new Color(255, 255, 255);
+        clr = new Color(150, 150, 150);
         graph2.setColor(clr);
-        graph2.setStroke(new BasicStroke(5));
+        graph2.setStroke(new BasicStroke(3));
         graph2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
-
+        graph2.setColor(Color.white);
     }
 
     public void drawPauseScreen() {
@@ -281,7 +309,7 @@ public class UI {
     public void drawFPS(double FPS) {
         graph2.setColor(Color.white);
         graph2.setFont(console_40B);
-        graph2.setFont(graph2.getFont().deriveFont(Font.PLAIN, 20));
+        graph2.setFont(new Font("Consolas", Font.PLAIN, 20));
         String text = "FPS: " + FPS;
         graph2.drawString(text, gp.screenWidth - 2 * gp.tileSize, gp.originalTileSize);
     }

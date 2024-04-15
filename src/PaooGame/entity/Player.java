@@ -505,8 +505,8 @@ public class Player extends Entity {
         graph2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
         // Debug
-        graph2.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
-        graph2.setColor(Color.white);
-        graph2.drawString("Invincible: " + invincibleCounter, 10, 400);
+//        graph2.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
+//        graph2.setColor(Color.white);
+//        graph2.drawString("Invincible: " + invincibleCounter, 10, 400);
     }
 }

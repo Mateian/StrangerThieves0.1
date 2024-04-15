@@ -164,9 +164,9 @@ public class NPC_Fen extends Entity {
     }
 
     public void setDialog() {
-        dialogs[0] = "Skaaar!...SKAAR !!!";
-        dialogs[1] = "They are coming !!!";
-        dialogs[2] = "Skar, please save meaaaaaaaaaaa\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!";
+        dialogs[0] = "Skaar! ... Skar!";
+        dialogs[1] = "Ei se apropie!";
+        dialogs[2] = "Skar, te rog, salveaza-ma!";
     }
 
     public void talk() {
