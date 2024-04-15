@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Player extends Entity {
 
+    private static int instances = 0;
+
     // Key Handler
     KeyHandler keyH;
 
@@ -30,7 +32,7 @@ public class Player extends Entity {
     int counterGun = 0;
     public int hasKey = 0;
 
-    public Player(Game gp, KeyHandler keyH) {
+    private Player(Game gp, KeyHandler keyH) {
         super(gp);
 
         this.keyH = keyH;
@@ -52,6 +54,14 @@ public class Player extends Entity {
 
         setDefaultValues();
         getImage();
+    }
+
+    public static Player CreatePlayer(Game gp, KeyHandler keyH) {
+        if(instances == 0) {
+            instances++;
+            return new Player(gp, keyH);
+        }
+        return null;
     }
 
     public void setDefaultValues() {

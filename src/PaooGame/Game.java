@@ -45,7 +45,7 @@ public class Game extends JPanel implements Runnable {
     public AssetSetter aSetter = new AssetSetter(this);
 
     // Entities & Objects
-    public Player player = new Player(this, keyH);
+    public Player player = Player.CreatePlayer(this, keyH);
     public Entity[] obj = new Entity[10];
     public Entity[] NPC = new Entity[10];
     public Entity[] mst = new Entity[30];
