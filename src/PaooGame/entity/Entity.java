@@ -31,6 +31,7 @@ public abstract class Entity {
 
     // Index
     public int spriteNumber = 0;
+    public static int invalidIndex = 999;
 
     // Counters
     public int spriteCounter = 0;

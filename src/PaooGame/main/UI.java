@@ -40,7 +40,7 @@ public class UI {
 
     // Play time
     double playTime;
-    DecimalFormat dFormat = new DecimalFormat("#0.00");
+    DecimalFormat dFormat = new DecimalFormat("#000.00");
 
     // Tools tool = new Tools()
 
@@ -114,7 +114,7 @@ public class UI {
                     playTime +=(double)1/60;
                 }
                 graph2.setFont(new Font("Consolas", Font.PLAIN, 20));
-                graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*13 + gp.tileSize / 2, 65);
+                graph2.drawString("Time: " + dFormat.format(playTime), gp.tileSize*12 + gp.tileSize - 10, 65);
 
                 // Message
                 if(messageOn) {
@@ -276,7 +276,7 @@ public class UI {
         x = gp.tileSize * 2 - gp.tileSize / 2 + 10;
         y = gp.screenHeight / 2 + gp.tileSize - gp.tileSize / 2 + 10;
         int NPCIndex = gp.colChecker.checkEntity(gp.player, gp.NPC);
-        if(NPCIndex != 999) {
+        if(NPCIndex != Entity.invalidIndex) {
             graph2.drawImage(gp.NPC[NPCIndex].down, x, y, null);
         }
 

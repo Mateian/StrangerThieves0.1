@@ -53,17 +53,17 @@ public class Game extends JPanel implements Runnable {
     public ArrayList<Entity> projectileList = new ArrayList<>();
 
     // Game State
-    public int gameState;
     public final int pauseState = 0;
     public final int playState = 1;
     public final int dialogState = 2;
     public final int menuState = 3;
     public final int lvl1CompleteState = 4;
+    public int gameState = menuState;
 
     // Objectives
     public boolean lvl1Completion = false;
     public int lvl1ObjectiveCounter = 0;
-    public int lvl1Objective = 25;
+    public int lvl1Objective = 5;
 
     public Game() {
         wnd = new GameWindow("Stranger Thieves", screenWidth, screenHeight, this);

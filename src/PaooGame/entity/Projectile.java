@@ -20,7 +20,7 @@ public class Projectile extends Entity {
     public void update() {
         if(ent == gp.player) {
             int mstIndex = gp.colChecker.checkEntity(this, gp.mst);
-            if(mstIndex != 999) {
+            if(mstIndex != invalidIndex) {
                 gp.player.damageEnemy(mstIndex, attack);
                 alive = false;
             }

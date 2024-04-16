@@ -29,12 +29,10 @@ public class AssetSetter {
     public void setMonster() {
         int k = 0;
         for(int i = 0; i < 5; ++i) {
-            for(int j = 0; j < 5; ++j) {
-                gp.mst[k] = new MST_Enemy(gp);
-                gp.mst[k].worldX = gp.tileSize * (23 + j);
-                gp.mst[k].worldY = gp.tileSize * (15 + i);
-                k++;
-            }
+            gp.mst[k] = new MST_Enemy(gp);
+            gp.mst[k].worldX = gp.tileSize * (23 + i);
+            gp.mst[k].worldY = gp.tileSize * (15 + i);
+            k++;
         }
     }
 }

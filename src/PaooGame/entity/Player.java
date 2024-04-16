@@ -69,7 +69,7 @@ public class Player extends Entity {
         worldY = gp.tileSize * 30 - 1;
         speed = 4;
         direction = "up";
-        maxLife = 6;
+        maxLife = 10;
         life = maxLife;
         projectile = new OBJ_Bullet(gp);
     }
@@ -259,7 +259,7 @@ public class Player extends Entity {
         }
     }
     public void damageEnemy(int i, int attack) {
-        if(i != 999) {
+        if(i != invalidIndex) {
             if(!gp.mst[i].invincible && !gp.mst[i].dead) {
                 gp.playFX(5);
 
@@ -286,7 +286,7 @@ public class Player extends Entity {
     }
 
     public void damageFromMonster(int i) {
-        if(i != 999) {
+        if(i != invalidIndex) {
             if(!invincible) {
                 life--;
                 invincible = true;
@@ -296,7 +296,7 @@ public class Player extends Entity {
 
     public void pickUpObject(int i) {
 
-        if(i != 999) {
+        if(i != invalidIndex) {
             String objectName = gp.obj[i].name;
 
             switch(objectName) {
@@ -347,7 +347,7 @@ public class Player extends Entity {
 
     public void intersectNPC(int i) {
         if(gp.keyH.ePressed) {
-            if(i != 999) {
+            if(i != invalidIndex) {
                 gp.gameState = gp.dialogState;
                 gp.NPC[i].talk();
             } else {
